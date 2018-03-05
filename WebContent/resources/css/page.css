@@ -1,0 +1,91 @@
+
+
+root { 
+    display: block;
+}
+
+body{
+    font-family:Lucida Grande, Lucida Sans, Arial, sans-serif;
+    font-size: 10px;
+    margin : 0 0 0;
+}
+
+.ui{font-family:Lucida Grande, Lucida Sans, Arial, sans-serif;font-size:10px;}
+
+#container{
+    position: relative;
+    width: 90%;
+    font-size: 10px;
+}
+
+#menuDiv{
+    position: relative;
+    left: 0;
+    width: auto;
+    float: left;
+    top: -121px;
+    font-size: 10px;
+}
+
+#contentDiv{
+    position: relative;
+    left: auto;
+    float: left;
+    padding-left: 1%;
+    width: 75%;
+    font-size: 10px;
+}
+
+.titolo{
+    font-weight: bold;
+}
+
+.disable-scroll .ui-dialog-content {
+    overflow: hidden !important;
+}
+
+.myLabel{
+    background-color: #d1efcb;
+}
+
+.myLabel2{
+    background-color:#f2daf2;
+}
+
+
+/* p:panelGrid senza bordi */
+.noBorder .ui-panelgrid,
+.noBorder .ui-panelgrid-cell
+{
+   border-style: none;
+   border-color: red;
+   border-collapse: separate;
+}
+
+.noBorder .ui-panel-content
+{
+   padding: 0;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 18%;
+    right: 10%;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: white;
+}
+.bottom-left {
+    position: absolute;
+    bottom: 18%;
+    left: 30%;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #000033 ;
+    color: #fff;
+    font-family:verdana;  
+    font-size: large
+}
+
+.highlightTableRow {
+	background: none repeat scroll 0 0 red;
+   	font-weight: bold;
+}

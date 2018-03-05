@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="templates/templateInformazioni.xhtml">
+	<ui:define name="content">
+		<!-- h:outputStylesheet library="css" name="/resources/css/stylesheet.css" />
+		<h:outputStylesheet library="css" name="/resources/css/navigation.css" />
+		<h:outputStylesheet library="js" name="/resources/js/locale.js" /-->		
+		
+		<h:form id="form">
+						
+			
+			<p:fieldset styleClass="fieldset" legend="Dati Struttura" toggleable="true" toggleSpeed="500" style="margin-top:20px">
+				<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid testo">
+					<p:outputLabel styleClass="testo" for="calendar" value="Inizio attività : *"/>
+                	<p:calendar id="calendar">
+                		<f:convertDateTime pattern="dd/MM/yyyy"/>
+                	</p:calendar>
+					<p:outputLabel styleClass="testo" for="calendar2" value="Data di costruzione : *"/>
+                	<p:calendar id="calendar2">
+                		<f:convertDateTime pattern="dd/MM/yyyy"/>
+                	</p:calendar>
+                	<p:outputLabel styleClass="testo" for="calendar3" value="Data ultima restaurazione : "/>
+                	<p:calendar id="calendar3">
+                		<f:convertDateTime pattern="dd/MM/yyyy"/>
+                	</p:calendar>
+					<p:outputLabel styleClass="testo" value="Abitazione privata :"/>
+					<p:selectBooleanCheckbox styleClass="testoSx" value="false" />				
+				</p:panelGrid>
+				<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<p:commandButton styleClass="bottone" value="Salva" action="#{DatiStruttura.buttonSalva}"  />
+					<p:commandButton styleClass="bottone" value="Annulla" action="#{DatiStruttura.buttonAnnulla}" />
+				</p:panelGrid>			
+			</p:fieldset>
+		</h:form>
+	 </ui:define>
+</ui:composition>

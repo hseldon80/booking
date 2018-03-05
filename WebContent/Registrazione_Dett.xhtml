@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="templates/templateAdmin.xhtml">
+	<ui:define name="content">
+		<h:outputStylesheet library="css" name="/resources/css/stylesheet.css" />
+		<h:outputStylesheet library="css" name="/resources/css/navigation.css" />
+		<h:outputStylesheet library="js" name="/resources/js/locale.js" />		
+		
+		<h:form id="form">
+		<h:inputHidden value="#{Registrazione.hidden}" />
+				<p:fieldset styleClass="fieldset" legend="Registrazione " toggleable="true" toggleSpeed="500" style="margin-top:20px">		
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:outputLabel styleClass="testo" for="input" value="Email : *"/>
+                			<p:inputText id="input"/>														
+							<p:outputLabel styleClass="testo" for="pwd" value="Password : *"/>
+                			<p:password id="pwd" />
+			                <p:outputLabel styleClass="testo" for="input2" value="Nome : *"/>
+                			<p:inputText id="input2"/>	
+			                <p:outputLabel styleClass="testo" for="input3" value="Cognome : *"/>
+                			<p:inputText id="input3"/>	
+                			<p:outputLabel styleClass="testo" for="input4" value="Cellulare : "/>
+                			<p:inputNumber id="input4" value="0" decimalPlaces="0" />    
+                			<p:outputLabel styleClass="testo" for="onemenu3" value="Tipologia di utenza : *"/>
+			                <p:selectOneMenu id="onemenu3">					                    
+			                    <f:selectItem itemLabel="Utente Business" itemValue="1" />
+			                    <f:selectItem itemLabel="Utente Privato" itemValue="0" />					                    
+			                </p:selectOneMenu>          						                
+						</p:panelGrid>
+						<p:panelGrid columns="3" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">							
+							<p:commandButton styleClass="bottone" value="Salva" action="#{Registrazione.buttonSalva}" />
+							<p:commandButton styleClass="bottone" value="Annulla" action="#{Registrazione.buttonAnnulla}"/>
+							<p:commandButton styleClass="bottone" value="Elimina" action="#{Registrazione.buttonElimina}">
+								<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+							</p:commandButton>
+						</p:panelGrid>
+			
+				
+			</p:fieldset>
+			
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  responsive="true">
+		        <p:commandButton value="Yes" type="button" styleClass="bottone ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="No" type="button" styleClass="bottone ui-confirmdialog-no" icon="ui-icon-close" />
+		    </p:confirmDialog>		
+			
+			
+		</h:form>
+	 </ui:define>
+</ui:composition>

@@ -1,0 +1,740 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="templates/templateStruttura.xhtml">
+	<ui:define name="content">
+		<h:outputStylesheet library="css" name="/resources/css/stylesheet.css" />
+		<h:outputStylesheet library="css" name="/resources/css/navigation.css" />
+		<h:outputStylesheet library="js" name="/resources/js/locale.js" />		
+		
+		
+						
+			
+			<p:fieldset styleClass="fieldset" legend="Servizi " toggleable="true" toggleSpeed="500" style="margin-top:20px">		
+				
+				<p:tabView prependId="false" cache="false" style="width:100%">
+					<p:tab title="Pasti" titleStyleClass="tabNouveau">
+						<h:form id="form_pasti">
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:outputLabel styleClass="testo" value="Offri colazione e/o pranzo e/o cena : "/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Colazione inclusa nel prezzo : "/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Vuole vendere i pasti on line : "/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" for="input" value="Prezzo colazione venduta on line :"/>								
+	                			<p:inputNumber id="input" value="0" decimalPlaces="2" />
+								<p:outputLabel styleClass="testo" for="input1" value="Prezzo pranzo venduto on line :"/>
+	                			<p:inputNumber id="input1" value="0" decimalPlaces="2" />
+								<p:outputLabel styleClass="testo" for="input2" value="Prezzo cena venduta on line :"/>
+	                			<p:inputNumber id="input2" value="0" decimalPlaces="2" />
+							</p:panelGrid>
+							<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">							
+								<p:outputLabel styleClass="testo" value="Colazione americana :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Colazione senza glutine :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Colazione vegetariana :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Colazione asiatica :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Colazione halal :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Colazione vegana :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Colazione a buffet :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Colazione italiana :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Colazione inglese :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Colazione continentale :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Colazione koser :"/>
+								<p:selectBooleanCheckbox value="false" />													
+							</p:panelGrid>
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:commandButton styleClass="bottone" value="Salva"  action="#{Servizi.buttonSalvaPasti}"/>
+								<p:commandButton styleClass="bottone" value="Annulla" action="#{Servizi.buttonAnnulla}" />
+							</p:panelGrid>
+						</h:form>
+					</p:tab>
+					<p:tab title="Lingua parlata" titleStyleClass="tabNouveau">
+					<h:form id="form_lingua">
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="margin-bottom:40px">				
+							<p:outputLabel styleClass="testo" for="onemenu" value="Lingua Parlata : *"/>
+			                <p:selectOneMenu id="onemenu" styleClass="sfondo">  
+			                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+			                    <f:selectItem itemLabel="Italiano" itemValue="1" />
+			                    <f:selectItem itemLabel="Inglese" itemValue="2" />
+			                    <f:selectItem itemLabel="Tedesco" itemValue="3" />
+			                </p:selectOneMenu>		
+			                <p:outputLabel styleClass="testo" value=""/>
+							<p:commandButton styleClass="bottone" value="Aggiungi lingua" action="#{Servizi.buttonSalvaLingua}" />
+						</p:panelGrid>					
+						<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
+					        <f:facet name="header">
+					            Ligua parlata
+					        </f:facet>
+					        <p:column headerText="Lingua">
+					            <h:outputText value="#{car.id}" />
+					        </p:column>
+					        
+					         <p:column headerText="Elimina" style="width:70px;text-align: center">
+					            <p:commandButton styleClass="bottone" icon="ui-icon-circle-close" title="Delete" action="#{Servizi.buttonEliminaLingua(car)}">
+					            		<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+					            </p:commandButton>					           
+					        </p:column>
+					        
+					    </p:dataTable>
+				    </h:form>
+				</p:tab>
+					<p:tab title="Attività" titleStyleClass="tabNouveau">
+						<h:form id="form_attivita">
+							<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">							
+								<p:outputLabel styleClass="testo" value="Attrezzature tennis :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Badminton :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Spiaggia :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Campo di tennis :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Biliardo :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Ping pong :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Freccette :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Squash :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Bowling :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Minigolf :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Parco acquatico :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Immersioni :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Campo da golf :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Windsurf :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Snorkeling :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Attrezzatura sport acquatici :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Canoa :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Pesca :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Equitazione :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Escursionismo :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Sci :"/>
+								<p:selectBooleanCheckbox value="false" />	
+								<p:outputLabel styleClass="testo" value="Escursione in bicicletta :"/>
+								<p:selectBooleanCheckbox value="false" />					
+							</p:panelGrid>
+						
+						
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:commandButton styleClass="bottone" value="Salva"  action="#{Servizi.buttonSalvaAttivita}"/>
+								<p:commandButton styleClass="bottone" value="Annulla" action="#{Servizi.buttonAnnulla}"   />
+							</p:panelGrid>
+						</h:form>
+				</p:tab>	
+				<p:tab title="Ristorazione" titleStyleClass="tabNouveau">
+				<h:form id="form_ristorazione">
+					<p:fieldset styleClass="fieldset" legend="Ristorazione " toggleable="true" toggleSpeed="500" style="margin-top:20px">					
+						<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">							
+								<p:outputLabel styleClass="testo" value="Pasti per bambini :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Ristorante à la carte :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Buffet per bambini :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Ristorante a buffet :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Vino/champagne :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Bar :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Bottiglie d’acqua :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Snack bar :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Frutta :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Consegna spesa a domicilio :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Cioccolatini o biscotti :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Barbecue :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Distributore automatico di bevande :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Servizio in camera :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Distributore automatico di snack :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Colazione in camera :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Menù per diete particolari :"/>
+								<p:selectBooleanCheckbox value="false" />								
+						</p:panelGrid>
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">																			
+								<p:outputLabel styleClass="testo" for="input4" value="Nome del ristorante :"/>
+	                			<p:inputText id="input4" value=" "/>							
+								<p:outputLabel styleClass="testo" for="onemenu2" value="Tipo di menù :"/>
+				                <p:selectOneMenu id="onemenu2" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="Fisso" itemValue="1" />
+				                    <f:selectItem itemLabel="Giornaliero" itemValue="2" />				                    
+				                </p:selectOneMenu>		
+				                <p:outputLabel styleClass="testo" value="Aperto solo agli ospiti della struttura :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Prenotazione :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Posti all’aperto :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" for="onemenu3" value="Cucina :"/>
+				                <p:selectOneMenu id="onemenu3" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="Italiana" itemValue="1" />
+				                    <f:selectItem itemLabel="Estera" itemValue="2" />
+				                    <f:selectItem itemLabel="Entrambe" itemValue="3" />
+				                </p:selectOneMenu>		
+								<p:outputLabel styleClass="testo" for="onemenu4" value="Opzioni dietetiche :"/>
+				                <p:selectOneMenu id="onemenu4" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="Si" itemValue="1" />
+				                    <f:selectItem itemLabel="No" itemValue="0" />				                    
+				                </p:selectOneMenu>		
+								<p:outputLabel styleClass="testo" for="onemenu5" value="Atmosfera :"/>
+				                <p:selectOneMenu id="onemenu5" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="Romantica" itemValue="0" />
+				                    <f:selectItem itemLabel="Normale" itemValue="1" />				                    
+				                </p:selectOneMenu>		
+								<p:outputLabel styleClass="testo" value="Aperto a colazione :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Aperto per il brunch :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Aperto per aperitivo :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Aperto per high tea :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Aperto per cena :"/>
+								<p:selectBooleanCheckbox value="false" />
+								<p:outputLabel styleClass="testo" value="Aperto per pranzo :"/>
+								<p:selectBooleanCheckbox value="false" />
+							</p:panelGrid>	
+						
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:commandButton styleClass="bottone" value="Salva" action="#{Servizi.buttonSalvaRistorazione}" />
+								<p:commandButton styleClass="bottone" value="Annulla" action="#{Servizi.buttonAnnulla}"  />
+							</p:panelGrid>
+					</p:fieldset>
+					<p:fieldset styleClass="fieldset" legend="Orari di apertura " toggleable="true" toggleSpeed="500" style="margin-top:20px">
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-5" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:outputLabel styleClass="testo" for="onemenu6" value="Giorno di apertura :"/>
+			                <p:selectOneMenu id="onemenu6" styleClass="sfondo">  
+			                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+			                    <f:selectItem itemLabel="Domenica" itemValue="0" />
+			                    <f:selectItem itemLabel="Lunedi" itemValue="1" />
+			                    <f:selectItem itemLabel="Martedi" itemValue="2" />
+			                    <f:selectItem itemLabel="Mercoledi" itemValue="3" />
+			                    <f:selectItem itemLabel="Giovedi" itemValue="4" />
+			                    <f:selectItem itemLabel="Venerdi" itemValue="5" />
+			                    <f:selectItem itemLabel="Sabato" itemValue="6" />
+			                </p:selectOneMenu>	
+						</p:panelGrid>
+						<p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-1,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:outputLabel styleClass="testo" for="onemenu7" value="Aperto dalle :"/>
+			                <p:selectOneMenu id="onemenu7" styleClass="sfondo">  
+			                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+			                    <f:selectItem itemLabel="00" itemValue="0" />
+			                    <f:selectItem itemLabel="01" itemValue="1" />
+			                    <f:selectItem itemLabel="02" itemValue="2" />
+			                    <f:selectItem itemLabel="03" itemValue="3" />
+			                    <f:selectItem itemLabel="04" itemValue="4" />
+			                    <f:selectItem itemLabel="05" itemValue="5" />
+			                    <f:selectItem itemLabel="06" itemValue="6" />
+			                    <f:selectItem itemLabel="07" itemValue="7" />
+			                    <f:selectItem itemLabel="08" itemValue="8" />
+			                    <f:selectItem itemLabel="09" itemValue="9" />
+			                    <f:selectItem itemLabel="10" itemValue="10" />
+			                    <f:selectItem itemLabel="11" itemValue="11" />
+			                    <f:selectItem itemLabel="12" itemValue="12" />
+			                    <f:selectItem itemLabel="13" itemValue="13" />
+			                    <f:selectItem itemLabel="14" itemValue="14" />
+			                    <f:selectItem itemLabel="15" itemValue="15" />
+			                    <f:selectItem itemLabel="16" itemValue="16" />
+			                    <f:selectItem itemLabel="17" itemValue="17" />
+			                    <f:selectItem itemLabel="18" itemValue="18" />
+			                    <f:selectItem itemLabel="19" itemValue="19" />
+			                    <f:selectItem itemLabel="20" itemValue="20" />
+			                    <f:selectItem itemLabel="21" itemValue="21" />
+			                    <f:selectItem itemLabel="22" itemValue="22" />
+			                    <f:selectItem itemLabel="23" itemValue="23" />			                    
+			                </p:selectOneMenu>	
+			                <p:outputLabel styleClass="testo" for="onemenu8" value="Aperto alle :"/>
+			                <p:selectOneMenu id="onemenu8" styleClass="sfondo">  
+			                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+			                    <f:selectItem itemLabel="00" itemValue="0" />
+			                    <f:selectItem itemLabel="01" itemValue="1" />
+			                    <f:selectItem itemLabel="02" itemValue="2" />
+			                    <f:selectItem itemLabel="03" itemValue="3" />
+			                    <f:selectItem itemLabel="04" itemValue="4" />
+			                    <f:selectItem itemLabel="05" itemValue="5" />
+			                    <f:selectItem itemLabel="06" itemValue="6" />
+			                    <f:selectItem itemLabel="07" itemValue="7" />
+			                    <f:selectItem itemLabel="08" itemValue="8" />
+			                    <f:selectItem itemLabel="09" itemValue="9" />
+			                    <f:selectItem itemLabel="10" itemValue="10" />
+			                    <f:selectItem itemLabel="11" itemValue="11" />
+			                    <f:selectItem itemLabel="12" itemValue="12" />
+			                    <f:selectItem itemLabel="13" itemValue="13" />
+			                    <f:selectItem itemLabel="14" itemValue="14" />
+			                    <f:selectItem itemLabel="15" itemValue="15" />
+			                    <f:selectItem itemLabel="16" itemValue="16" />
+			                    <f:selectItem itemLabel="17" itemValue="17" />
+			                    <f:selectItem itemLabel="18" itemValue="18" />
+			                    <f:selectItem itemLabel="19" itemValue="19" />
+			                    <f:selectItem itemLabel="20" itemValue="20" />
+			                    <f:selectItem itemLabel="21" itemValue="21" />
+			                    <f:selectItem itemLabel="22" itemValue="22" />
+			                    <f:selectItem itemLabel="23" itemValue="23" />
+			                </p:selectOneMenu>	
+			                <p:outputLabel styleClass="testo" value=""/>
+			                <p:commandButton update="orario" styleClass="bottone" value="Aggiungi" action="#{Servizi.buttonSalvaOrarioRistorazione}" />
+						</p:panelGrid>
+						<p:dataTable id="orario" var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
+					        <f:facet name="header">
+					            Giorni Apertura
+					        </f:facet>
+					        <p:column headerText="Giorno">
+					            <h:outputText value="#{car.id}" />
+					        </p:column>
+					 
+					        <p:column headerText="Dalle">
+					            <h:outputText value="#{car.year}" />
+					        </p:column>
+					 
+					        <p:column headerText="Alle">
+					            <h:outputText value="#{car.brand}" />
+					        </p:column>
+					        
+					         <p:column headerText="Elimina" style="width:70px;text-align: center">
+					            <p:commandButton update="orario" styleClass="bottone" icon="ui-icon-circle-close" title="Delete" action="#{Servizi.buttonEliminaOrarioRistorazione(car)}">
+					            		<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+					            </p:commandButton>					           
+					        </p:column>
+					        
+					    </p:dataTable>
+					</p:fieldset>
+				</h:form>
+				</p:tab>	
+				<p:tab title="Piscine e benessere " titleStyleClass="tabNouveau">
+					<h:form id="form_piscine">
+					<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">							
+							<p:outputLabel styleClass="testo" value="Scivolo d’acqua :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Servizi spa :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Teli da bagno :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Bagno turco :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Sdraio/lettini :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Sala spa/area relax :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Ombrelloni :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Pediluvio :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Servizio di bellezza :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Pacchetti spa/benessere :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Poltrona massaggi :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Fitness :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Lezioni yoga :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Lezioni di fitness :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Personal trainer :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina per bambini :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Armadietti per fitness/spa :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Giochi d’acqua :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina all’ultimo piano :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina a sfioro :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina con vista :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina riscaldata :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina di acqua salata :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vasca immersione ad acqua fredda :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Bar a bordo piscina :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Zona acqua bassa :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Copertura per piscina :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Recinto attorno alla piscina :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina coperta :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina al coperto(stagionale) :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina all’aperto :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina al coperto(tutto l’anno) :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina all’aperto(tutto l’anno) :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina all’aperto(stagionale) :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" for="onemenu9" value="Costo piscina all’aperto(tutto l’anno) :"/>
+							<p:selectOneMenu id="onemenu9" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="Incluso" itemValue="1" />
+				                    <f:selectItem itemLabel="Non Incluso" itemValue="2" />				                    
+				             </p:selectOneMenu>	
+					</p:panelGrid>         		
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+						<p:commandButton styleClass="bottone" value="Salva" action="#{Servizi.buttonSalvaPiscine}" />
+						<p:commandButton styleClass="bottone" value="Annulla" action="#{Servizi.buttonAnnulla}" />
+					</p:panelGrid>
+					</h:form>
+				</p:tab>
+				<p:tab title="Spa e benessere" titleStyleClass="tabNouveau">
+					<h:form id="form_spa">
+					<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">							
+							<p:outputLabel styleClass="testo" value="Spa e benessere :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" for="onemenu10" value="Costo spa e benessere :"/>
+							<p:selectOneMenu id="onemenu10" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="Incluso" itemValue="1" />
+				                    <f:selectItem itemLabel="Non Incluso" itemValue="2" />	
+				             </p:selectOneMenu>	
+							<p:outputLabel styleClass="testo" value="Sauna :"/>
+							<p:selectBooleanCheckbox value="false" />							
+							<p:outputLabel styleClass="testo" value="Hammam :"/>							
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Vasca idromassaggio :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Palestra :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Solarium :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vasca termale :"/>							
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Massaggi :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" for="onemenu11" value="Costo massaggi :"/>
+							<p:selectOneMenu id="onemenu11" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="Incluso" itemValue="1" />
+				                    <f:selectItem itemLabel="Non Incluso" itemValue="2" />	
+				            </p:selectOneMenu>								
+							<p:outputLabel styleClass="testo" value="Massaggi alla schiena :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Massaggi ai piedi :"/>
+							
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Massaggi al collo :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Massaggi alla testa :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Massaggi di coppia :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Massaggi al corpo :"/>
+							
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Massaggi alle mani :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vasca comune :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vasca all’aperto :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+					</p:panelGrid>  
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+						<p:commandButton styleClass="bottone" value="Salva"  action="#{Servizi.buttonSalvaSpa}" />
+						<p:commandButton styleClass="bottone" value="Annulla"  action="#{Servizi.buttonAnnulla}" />
+					</p:panelGrid>
+					</h:form>
+				</p:tab>
+				<p:tab title="Trasporti" titleStyleClass="tabNouveau">
+				<h:form id="form_trasporti">
+					<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">																					
+							<p:outputLabel styleClass="testo" value="Parcheggio custodito :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Parcheggio in strada :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Autorimessa :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Parcheggio disabili :"/>							
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Ricarica per i veicoli elettrici :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Servizio navetta :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Biglietti per i mezzi di trasporto :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Autonoleggio :"/>							
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Noleggio biciclette gratuito :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Navetta aeroportuale :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Noleggio biciclette (a pagamento) :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							
+					</p:panelGrid>
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+						<p:commandButton styleClass="bottone" value="Salva" action="#{Servizi.buttonSalvaTrasporti}" />
+						<p:commandButton styleClass="bottone" value="Annulla" action="#{Servizi.buttonAnnulla}"  />
+					</p:panelGrid>  
+					</h:form>
+				</p:tab>
+				<p:tab title="Accoglienza" titleStyleClass="tabNouveau">
+				<h:form id="form_accoglienza">
+					<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">																					
+							<p:outputLabel styleClass="testo" value="Biglietti per attrazioni o spettacoli :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Aree comuni :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Arredamento da esterni :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Area picnic :"/>							
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Zona camino :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Giardino :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Terrazza :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Terrazza solarium :"/>							
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Cucina in comune :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Sala comune/zona tv :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Sala giochi :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Biblioteca :"/>							
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Cappella o luogo di culto :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+					</p:panelGrid>
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+						<p:commandButton styleClass="bottone" value="Salva" action="#{Servizi.buttonSalvaAccoglienza}"  />
+						<p:commandButton styleClass="bottone" value="Annulla" action="#{Servizi.buttonAnnulla}"  />
+					</p:panelGrid>
+				</h:form>  
+				</p:tab>
+				<p:tab title="Intrattenimento" titleStyleClass="tabNouveau">
+				<h:form id="form_intrattenimento">
+					<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">																					
+							<p:outputLabel styleClass="testo" value="Giochi da tavolo/puzzle :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Libri, DVD, musica per bambini :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Area giochi al coperto :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Area giochi all’aperto :"/>							
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Cancelletti di sicurezza per bambini :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Canali tv per bambini "/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Passeggini :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							
+					</p:panelGrid>
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+						<p:commandButton styleClass="bottone" value="Salva" action="#{Servizi.buttonSalvaIntrattenimento}" />
+						<p:commandButton styleClass="bottone" value="Annulla" action="#{Servizi.buttonAnnulla}"  />
+					</p:panelGrid>
+				</h:form>  
+				</p:tab>
+				<p:tab title="Pulizia" titleStyleClass="tabNouveau">
+				<h:form id="form_pulizia">
+					<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">																					
+							<p:outputLabel styleClass="testo" value="Lavaggio a secco :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Servizio stireria :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Servizio lavanderia :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Servizio pulizie giornaliero :"/>							
+							<p:selectBooleanCheckbox value="false" />							
+							<p:outputLabel styleClass="testo" value="Lustrascarpe :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Stirapantaloni :"/>
+							<p:selectBooleanCheckbox value="false" />
+					</p:panelGrid>
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+						<p:commandButton styleClass="bottone" value="Salva" action="#{Servizi.buttonPulizia}" />
+						<p:commandButton styleClass="bottone" value="Annulla" action="#{Servizi.buttonAnnulla}"  />
+					</p:panelGrid>  
+				</h:form>
+				</p:tab>
+				<p:tab title="Albergo" titleStyleClass="tabNouveau">
+				<h:form id="form_albergo">
+					<p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">																					
+							<p:outputLabel styleClass="testo" value="Prenotazione al ristorante :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value=""/>
+							<p:outputLabel styleClass="testo" value=""/>
+							
+							<p:outputLabel styleClass="testo" value="Prenotazione tavolo specifico :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" for="onemenu12" value="Costo prenotazione tavolo specifico :"/>
+							<p:selectOneMenu id="onemenu12" styleClass="sfondo">  
+				                   <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                   <f:selectItem itemLabel="Incluso" itemValue="1" />
+				                   <f:selectItem itemLabel="Non Incluso" itemValue="2" />			
+				             </p:selectOneMenu>		
+							<p:outputLabel styleClass="testo" value="Prenotazioni cibo o bevande particolari :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" for="onemenu13" value="Costo per la prenotazione di cibi o bevande particolari :"/>
+							<p:selectOneMenu id="onemenu13" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="Incluso" itemValue="1" />
+				                    <f:selectItem itemLabel="Non Incluso" itemValue="2" />			
+				             </p:selectOneMenu>		
+					
+							<p:outputLabel styleClass="testo" for="onemenu14" value="Servizi in camera :"/>
+							<p:selectOneMenu id="onemenu14" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="Servizio 1" itemValue="1" />
+				                    <f:selectItem itemLabel="Servizio 2" itemValue="2" />
+				                    <f:selectItem itemLabel="Servizio 3" itemValue="3" />			
+				             </p:selectOneMenu>		
+							<p:outputLabel styleClass="testo" value=""/>
+							<p:outputLabel styleClass="testo" value=""/>
+							
+							<p:outputLabel styleClass="testo" value="Prenotazione servizi spa :"/>
+							<p:selectBooleanCheckbox value="false" />							
+							<p:outputLabel styleClass="testo" value="Servizi turistici esterni :"/>							
+							<p:selectBooleanCheckbox value="false" />							
+							
+							<p:outputLabel styleClass="testo" value="Richiesta di check out late :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Servizi televisivi/giochi in camera :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Richiesta aiuto bagagli :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Prenotazione servizi sportivi vari "/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Servizi social interni :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+					</p:panelGrid>
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+						<p:commandButton styleClass="bottone" value="Salva" action="#{Servizi.buttonSalvaAlbergo}"  />
+						<p:commandButton styleClass="bottone" value="Annulla" action="#{Servizi.buttonAnnulla}"  />
+					</p:panelGrid>  
+				</h:form>
+				</p:tab>
+				<p:tab title="Servizi vari" titleStyleClass="tabNouveau">
+				<h:form id="form_vari">
+					<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">																					
+							<p:outputLabel styleClass="testo" value="animali domestici :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="ciotole per animali domestici :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="struttura per soli adulti :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="camera anallergica :"/>							
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="struttura interamente non fumatori :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="area fumatori :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="camera non fumatori :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="ascensore :"/>							
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="camere/strutture per ospiti disabili :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="disponibilità di camere familiari :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="camere insonorizzate :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="suite nuziali :"/>							
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="servizi VIP in camera :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="riscaldamento :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="area condizionata :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" for="onemenu15" value="costo per l’aria condizionata :"/>
+							<p:selectOneMenu id="onemenu15" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="Incluso" itemValue="1" />
+				                    <f:selectItem itemLabel="Non Incluso" itemValue="2" />	
+				             </p:selectOneMenu>		
+							
+					</p:panelGrid>
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+						<p:commandButton styleClass="bottone" value="Salva" action="#{Servizi.buttonSalvaVarie}"  />
+						<p:commandButton styleClass="bottone" value="Annulla" action="#{Servizi.buttonAnnulla}"  />
+					</p:panelGrid>  
+				</h:form>
+				</p:tab>
+				</p:tabView>
+			</p:fieldset>
+			
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  responsive="true">
+		        <p:commandButton value="Yes"  styleClass="bottone ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="No"  styleClass="bottone ui-confirmdialog-no" icon="ui-icon-close" />
+		    </p:confirmDialog>
+			
+			
+			
+		
+	 </ui:define>
+</ui:composition>

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="templates/templateStruttura.xhtml">
+	<ui:define name="content">
+		<h:outputStylesheet library="css" name="/resources/css/stylesheet.css" />
+		<h:outputStylesheet library="css" name="/resources/css/navigation.css" />
+		<h:outputStylesheet library="js" name="/resources/js/locale.js" />		
+		
+		<h:form id="form" enctype="multipart/form-data">
+						
+			
+			<p:fieldset styleClass="fieldset" legend="Gestione Foto" toggleable="true" toggleSpeed="500" style="margin-top:20px">
+				<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:outputLabel styleClass="testo" value="Foto : *"/>
+							<p:fileUpload value="#{FotoStruttura.file}"  mode="simple" skinSimple="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+							<p:outputLabel styleClass="testo" value=""/>		
+							<p:commandButton update="galleria" ajax="false" styleClass="bottone" value="Aggiungi" action="#{FotoStruttura.buttonAggiungiFoto}" />					
+				</p:panelGrid>
+				<p:dataTable id="galleria" var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
+				        <f:facet name="header">
+				            Foto Struttura
+				        </f:facet>
+				        <p:column headerText="Foto">				            
+				            <p:graphicImage width="50" height="50" value="/resources/images/card_file.png"/> 
+				        </p:column>
+				        
+				        <p:column headerText="Elimina" style="width:70px;text-align: center">
+				            <p:commandButton update="galleria" styleClass="bottone" icon="ui-icon-circle-close" title="Delete" action="#{FotoStruttura.buttonElimina(car)}" >
+				            	<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+				            </p:commandButton>					           
+				        </p:column>
+				        
+				    </p:dataTable>	
+			</p:fieldset>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  responsive="true">
+		        <p:commandButton value="Yes"  styleClass="bottone ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="No"  styleClass="bottone ui-confirmdialog-no" icon="ui-icon-close" />
+		    </p:confirmDialog>
+		</h:form>
+	 </ui:define>
+</ui:composition>

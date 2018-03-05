@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"  
+    xmlns:f="http://java.sun.com/jsf/core">
+
+<f:view contentType="text/html" id="fview">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Gestione Aziendale</title>
+    <h:head>    	
+		<link href="${request.contextPath}/resources/css/responsive.css" rel="stylesheet" type="text/css"/>		  
+		<link href="${request.contextPath}/resources/css/stylesheet.css" rel="stylesheet" type="text/css"/>
+		<link href="${request.contextPath}/css/navigation.css" rel="stylesheet" type="text/css"/>  
+    </h:head>
+ 
+    <h:body>        	
+    	<p:layout fullPage="true" resizeTitle="resize" style="background-color:#FFFFFF;">
+    		<p:layoutUnit  id="centerLayout" position="center" >
+			<div class="ui-g" style="width:100%;">
+				<p:graphicImage style="width:100%; height: auto; border-radius:10px" id="tab2Img" value="/resources/images/logo.png" />
+			</div>
+			<div class="ui-g" style="width:100%;padding-top: 0px;padding-bottom: 0px;">
+				<div class="ui-g-12 ui-md-6 ui-lg-3"><p:outputLabel rendered="#{sessionBean1.utente_business == 1}" styleClass="testoSx" value="Struttura : #{sessionBean1.nomeStruttura} " /></div>
+    			<div class="ui-g-12 ui-md-6 ui-lg-3"></div>
+    			<div class="ui-g-12 ui-md-6 ui-lg-3" style="text-align: right !important;"></div>    			
+    			<div class="ui-g-12 ui-md-6 ui-lg-3" style="text-align: right !important;">
+    			        <p:commandLink id="esci" action="Login.xhtml" actionListener="#{Login.logout}"> 
+    						<p:graphicImage width="25" height="25" style="border-radius:10px;margin-right:15px" id="tab3Img" value="/resources/images/picture.jpg" />
+        					<h:outputText styleClass="esci" value="Esci : #{sessionBean1.nomeUtente}"  />
+    					</p:commandLink>
+  			  </div>
+			</div> 
+			<div class="ui-g sfondo" style="width:100%;">  
+				<h:inputHidden value="#{Home.hidden}" />
+				
+				<p:menu styleClass="menubar ui-menubar centeredMenuBar sfondo" style="width:100%;height:20px;text-align: center;display: inline-block;border:0px">
+	          			<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Home" url="./Home.xhtml"/>
+	 					<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Struttura" url="./Struttura.xhtml"/>
+	 					<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Giudizi" url="./Giudizio_Business.xhtml"/>
+	 					<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Informazioni" url="./Dati_Struttura.xhtml"/>
+	 					<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Messaggi" url="./Messaggi.xhtml"/>
+	 					<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Dati" url="./Dati_Bancari.xhtml"/>	 						 		
+	            </p:menu>  
+	            </div>
+	            <div class="ui-g" style="width:100%;">
+	            <!--  menu -->	           	
+               	<div class="ui-g-12 ui-md-2">
+                	<ui:include src="menu.xhtml"/>
+    			</div>           
+	            <!-- fine menu -->
+			    <div class="ui-g-12 ui-md-10 ui-g-nopad">		
+			        <div class="ui-g-12 ui-g-nopad">
+			            <div class="ui-g">
+			            		<div class="ui-fluid">
+			            			
+			        					<ui:insert name="content" />
+			        				
+			        			</div>                             
+			            </div>
+			        </div>
+			    </div>
+			    <div class="ui-g" style="width:100%;text-align: center;display: inline-block;">
+			        
+			    </div>
+			</div>    
+			</p:layoutUnit> 
+    	</p:layout>
+    </h:body>
+
+</f:view>
+</html>

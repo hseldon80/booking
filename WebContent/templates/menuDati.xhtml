@@ -1,0 +1,16 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://java.sun.com/jsf/core">
+
+
+        <h:form>
+		    <p:menu styleClass="menubar sfondo" style="width : 95%">
+		    	<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Dati Bancari" url="./Dati_Bancari.xhtml"/>
+		    	<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Dati Fatturazione" url="./Dati_Fatturazione.xhtml"/>		    	
+		    	<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Fatture" url="./Fatture.xhtml"/>
+           	</p:menu> 	     
+        </h:form>
+</ui:composition>

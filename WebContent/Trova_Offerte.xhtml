@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="templates/templatePrivato.xhtml">
+	<ui:define name="content">
+		<!-- h:outputStylesheet library="css" name="/resources/css/stylesheet.css" />
+		<h:outputStylesheet library="css" name="/resources/css/navigation.css" />
+		<h:outputStylesheet library="js" name="/resources/js/locale.js" /-->				
+		<h:form id="form">
+			<h:inputHidden value="#{TrovaOfferte.hidden}" />
+			
+			<p:fieldset styleClass="fieldset" legend="Trova Offerte" toggleable="true" toggleSpeed="500" style="margin-top:20px">
+				<p:tabView prependId="false" cache="false" style="width:100%">
+					<p:tab title="Godfather Part I" titleStyleClass="tabNouveau">	
+						<p:fieldset styleClass="fieldset" legend="Ricerca" toggleable="true" toggleSpeed="500" style="margin-top:20px">		
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:outputLabel styleClass="testo" for="onemenu" value="OneMenu"/>
+				                <p:selectOneMenu id="onemenu" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Select One" itemValue="" />
+				                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+				                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
+				                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				                </p:selectOneMenu>
+				                <p:outputLabel styleClass="testo" for="input" value="Input"/>
+		                		<p:inputText id="input"/>	
+								<p:outputLabel styleClass="testo" for="calendar" value="Calendar"/>
+			                	<p:calendar id="calendar">
+			                		<f:convertDateTime pattern="dd/MM/yyyy"/>
+			                	</p:calendar>
+			                	<p:outputLabel styleClass="testo" for="calendar2" value="Calendar"/>
+			                	<p:calendar id="calendar2">
+			                		<f:convertDateTime pattern="dd/MM/yyyy"/>
+			                	</p:calendar>
+								<p:outputLabel styleClass="testo" for="onemenu2" value="OneMenu"/>
+				                <p:selectOneMenu id="onemenu2" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Select One" itemValue="" />
+				                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+				                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
+				                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				                </p:selectOneMenu>
+				                <p:outputLabel styleClass="testo" for="onemenu3" value="OneMenu"/>
+				                <p:selectOneMenu id="onemenu3" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Select One" itemValue="" />
+				                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+				                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
+				                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				                </p:selectOneMenu>
+				                <p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+							</p:panelGrid>
+							<p:panelGrid columns="1" columnClasses="ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:commandButton styleClass="bottone" value="Ricerca" type="button" />
+							</p:panelGrid>
+						</p:fieldset>
+						<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
+					        <f:facet name="header">
+					            DataTable
+					        </f:facet>
+					        <p:column headerText="Id">
+					           <p:graphicImage value="/resources/images/key.png"/> 	
+					        </p:column>
+					 
+					        <p:column headerText="Year">
+					            <h:outputText value="#{car.year}" />
+					        </p:column>
+					 
+					        <p:column headerText="Brand">
+					            <h:outputText value="#{car.brand}" />
+					        </p:column>
+					 
+					        <p:column headerText="Color">
+					            <h:outputText value="#{car.color}" />
+					        </p:column>
+					        
+					        <p:column headerText="Id2">
+					            <h:outputText value="#{car.id}" />
+					        </p:column>
+					 
+					        <p:column headerText="Year2">
+					            <h:outputText value="#{car.year}" />
+					        </p:column>
+					 
+					        <p:column headerText="Brand2">
+					            <h:outputText value="#{car.brand}" />
+					        </p:column>
+					 
+					        <p:column headerText="Color2">
+					            <h:outputText value="#{car.color}" />
+					        </p:column>
+					        
+					        <p:column headerText="Seleziona" style="width:70px;text-align: center">
+					            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" />					           
+					        </p:column>
+					        
+					    </p:dataTable>		
+					</p:tab>
+					<p:tab title="Godfather Part II" titleStyleClass="tabNouveau">			
+						<p:fieldset styleClass="fieldset" legend="Ricerca" toggleable="true" toggleSpeed="500" style="margin-top:20px">
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:outputLabel styleClass="testo" for="onemenu4" value="OneMenu"/>
+				                <p:selectOneMenu id="onemenu4" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Select One" itemValue="" />
+				                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+				                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
+				                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				                </p:selectOneMenu>
+				                <p:outputLabel styleClass="testo" for="input2" value="Input"/>
+		                		<p:inputText id="input2"/>	
+								<p:outputLabel styleClass="testo" for="calendar3" value="Calendar"/>
+			                	<p:calendar id="calendar3">
+			                		<f:convertDateTime pattern="dd/MM/yyyy"/>
+			                	</p:calendar>
+			                	<p:outputLabel styleClass="testo" for="calendar4" value="Calendar"/>
+			                	<p:calendar id="calendar4">
+			                		<f:convertDateTime pattern="dd/MM/yyyy"/>
+			                	</p:calendar>
+								<p:outputLabel styleClass="testo" for="onemenu5" value="OneMenu"/>
+				                <p:selectOneMenu id="onemenu5" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Select One" itemValue="" />
+				                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+				                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
+				                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				                </p:selectOneMenu>
+				                <p:outputLabel styleClass="testo" for="onemenu6" value="OneMenu"/>
+				                <p:selectOneMenu id="onemenu6" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Select One" itemValue="" />
+				                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+				                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
+				                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				                </p:selectOneMenu>
+				                <p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+							</p:panelGrid>
+							<p:fieldset styleClass="fieldset" legend="Budget" toggleable="true" toggleSpeed="500" >
+								<p:selectOneRadio id="city2" value="#{radioView.city2}" layout="responsive" columns="5">
+							        <f:selectItems value="#{radioView.cities}" var="c" itemLabel="#{city}" itemValue="#{city}"/>
+							    </p:selectOneRadio>
+							</p:fieldset>
+							<p:fieldset styleClass="fieldset" legend="Altri Filtri" toggleable="true" toggleSpeed="500" style="margin-top:20px">
+								<p:panelGrid columns="12" columnClasses="ui-grid-col-1,ui-grid-col-1,ui-grid-col-1,ui-grid-col-1,ui-grid-col-1,ui-grid-col-1,ui-grid-col-1,ui-grid-col-1,ui-grid-col-1,ui-grid-col-1,ui-grid-col-1,ui-grid-col-1" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">							
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />	
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />					
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />	
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />					
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+								<p:outputLabel styleClass="testo" value="Checkbox"/>
+								<p:selectBooleanCheckbox value="" />
+							</p:panelGrid>
+							</p:fieldset>
+							<p:panelGrid columns="1" columnClasses="ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="margin-top:20px">
+								<p:commandButton styleClass="bottone" value="Ricerca" type="button" />
+							</p:panelGrid>
+						</p:fieldset>
+						<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
+					        <f:facet name="header">
+					            DataTable
+					        </f:facet>
+					        <p:column headerText="Id">
+					        	<p:graphicImage value="/resources/images/key.png"/> 					            
+					        </p:column>
+					 
+					        <p:column headerText="Year">
+					            <h:outputText value="#{car.year}" />
+					        </p:column>
+					 
+					        <p:column headerText="Brand">
+					            <h:outputText value="#{car.brand}" />
+					        </p:column>
+					 
+					        <p:column headerText="Color">
+					            <h:outputText value="#{car.color}" />
+					        </p:column>
+					        
+					        <p:column headerText="Id2">
+					            <h:outputText value="#{car.id}" />
+					        </p:column>
+					 
+					        <p:column headerText="Year2">
+					            <h:outputText value="#{car.year}" />
+					        </p:column>
+					 
+					        <p:column headerText="Brand2">
+					            <h:outputText value="#{car.brand}" />
+					        </p:column>
+					 
+					        <p:column headerText="Color2">
+					            <h:outputText value="#{car.color}" />
+					        </p:column>
+					        
+					        <p:column headerText="Seleziona" style="width:70px;text-align: center">
+					            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" />					           
+					        </p:column>
+					        
+					    </p:dataTable>		
+					</p:tab>
+				</p:tabView>
+			</p:fieldset>
+		</h:form>
+	 </ui:define>
+</ui:composition>

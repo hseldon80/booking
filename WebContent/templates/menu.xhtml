@@ -1,0 +1,20 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://java.sun.com/jsf/core">
+
+
+        <h:form>
+		    <p:menu styleClass="menubar sfondo" style="width : 95%">
+		    	<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Profilo" url="./Profilo_Business.xhtml"/> 	
+		    	<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Delega" url="./Delega.xhtml"/>
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Prenotazione" url="./Prenotazione.xhtml"/>
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Partenza" url="./Partenza.xhtml"/>
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Arrivo" url="./Arrivo.xhtml"/>           		
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Preventivi" url="./Preventivi_Business.xhtml"/>           		
+           	</p:menu> 	    
+           	 	  
+        </h:form>
+</ui:composition>

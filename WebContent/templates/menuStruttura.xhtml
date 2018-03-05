@@ -1,0 +1,22 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://java.sun.com/jsf/core">
+
+
+        <h:form>
+		    <p:menu styleClass="menubar sfondo" style="width : 95%">
+		    	<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Seleziona Struttura" url="./Struttura.xhtml"/> 		        
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="IVA" url="./Iva_Dett.xhtml"/>
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Tasse/Supplementi" url="./Tasse_Supplementi.xhtml"/>
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Foto Struttura" url="./Foto_Struttura.xhtml"/>
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Foto camere" url="./Foto_Camera.xhtml"/>
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Condizioni" url="./Condizioni.xhtml"/>
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Servizi" url="./Servizi.xhtml"/>
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Camere" url="./Camera.xhtml"/>
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Indicazioni" url="./Indicazioni.xhtml"/>
+           	</p:menu> 	     
+        </h:form>
+</ui:composition>

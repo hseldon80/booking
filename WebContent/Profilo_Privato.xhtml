@@ -1,0 +1,310 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="templates/templatePrivato.xhtml">
+	<ui:define name="content">
+		<h:outputStylesheet library="css" name="/resources/css/stylesheet.css" />
+		<h:outputStylesheet library="css" name="/resources/css/navigation.css" />
+		<h:outputStylesheet library="js" name="/resources/js/locale.js" />		
+		
+		
+				<h:outputStylesheet library="css" name="/resources/css/stylesheet.css" />
+				<h:outputStylesheet library="css" name="/resources/css/navigation.css" />
+				<h:outputStylesheet library="js" name="/resources/js/locale.js" />		
+					<p:fieldset styleClass="fieldset" legend="Profilo " toggleable="true" toggleSpeed="500" style="margin-top:20px">		
+						
+						<p:tabView prependId="false" cache="false" style="width:100%">
+							<p:tab title="Gestione profilo" titleStyleClass="tabNouveau">
+								<h:form id="form_profilo">
+									<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+										<p:outputLabel styleClass="testo" for="input" value="Email : *"/>                			
+			                			<p:inputText id="input"/>														
+										<p:outputLabel styleClass="testo" for="pwd" value="Password : *"/>
+			                			<p:password id="pwd" />
+			                			<p:outputLabel styleClass="testo" for="input2" value="Nome : *"/>
+			                			<p:inputText id="input2"/>	
+						                <p:outputLabel styleClass="testo" for="input3" value="Cognome : *"/>
+			                			<p:inputText id="input3"/>	
+										<p:outputLabel styleClass="testo" for="calendar" value="Data di nascita :"/>
+					                	<p:calendar id="calendar">
+					                		<f:convertDateTime pattern="dd/MM/yyyy"/>
+					                	</p:calendar>		                	
+										<p:outputLabel styleClass="testo" for="onemenu" value="Paese :"/>
+						                <p:selectOneMenu id="onemenu" styleClass="sfondo">  
+						                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+						                    <f:selectItem itemLabel="Italia" itemValue="1" />
+						                    <f:selectItem itemLabel="Altro" itemValue="0" />					                    
+						                </p:selectOneMenu>			                
+					                	<p:outputLabel styleClass="testo" for="onemenu2" value="Titolo :"/>
+						                <p:selectOneMenu id="onemenu2">
+						                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+						                    <f:selectItem itemLabel="Signor" itemValue="1" />
+						                    <f:selectItem itemLabel="Signora" itemValue="2" />
+						                    <f:selectItem itemLabel="Dottor" itemValue="3" />
+						                    <f:selectItem itemLabel="Dottoressa" itemValue="4" />
+						                </p:selectOneMenu>					                
+			                			<p:outputLabel styleClass="testo" for="onemenu3" value="Sesso :"/>
+						                <p:selectOneMenu id="onemenu3">
+						                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+						                    <f:selectItem itemLabel="Uomo" itemValue="1" />
+						                    <f:selectItem itemLabel="Donna" itemValue="2" />					                    
+						                </p:selectOneMenu>
+						                <p:outputLabel styleClass="testo" for="input4" value="Cellulare :"/>
+			                			<p:inputNumber id="input4" value="0" decimalPlaces="0" />  			                       						                
+									</p:panelGrid>
+									<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+										<p:commandButton styleClass="bottone" value="Salva" action="#{ProfiloPrivato.buttonSalva}" />
+										<p:commandButton styleClass="bottone" value="Annulla" action="#{ProfiloPrivato.buttonAnnulla}" />
+									</p:panelGrid>
+								</h:form>
+							</p:tab>
+							<p:tab title="Foto profilo" titleStyleClass="tabNouveau">
+								<h:form id="form_foto" enctype="multipart/form-data">
+									<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+										<p:outputLabel styleClass="testo" value="Foto : *"/>
+										<p:fileUpload value="#{ProfiloPrivato.file}"  mode="simple" skinSimple="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+										<p:graphicImage width="100" height="100"  name="images/card_file.png"/> 
+										<p:outputLabel value=""/>
+										<p:commandButton ajax="false" styleClass="bottone" value="Salva" action="#{ProfiloPrivato.buttonAggiungiFoto}" />
+										<p:commandButton styleClass="bottone" value="Elimina" action="#{ProfiloPrivato.buttonEliminaFoto}"  >
+											<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+										</p:commandButton>
+									</p:panelGrid>
+								</h:form>
+						</p:tab>
+						<p:tab title="Indirizzo profilo" titleStyleClass="tabNouveau">
+							<h:form id="form_indirizzo">
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:outputLabel styleClass="testo" for="input12" value="Indirizzo : *"/>
+	                			<p:inputText id="input12"/>														
+								<p:outputLabel styleClass="testo" for="onemenu5" value="Città : *"/>
+				                <p:selectOneMenu id="onemenu5" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="Avellino" itemValue="1" />
+				                    <f:selectItem itemLabel="Benevento" itemValue="2" />
+				                    <f:selectItem itemLabel="Caserta" itemValue="3" />
+				                    <f:selectItem itemLabel="Napoli" itemValue="4" />
+				                    <f:selectItem itemLabel="Salerno" itemValue="5" />
+				                </p:selectOneMenu>		
+				                <p:outputLabel styleClass="testo" for="input6" value="CAP : "/>
+	                			<p:inputNumber id="input6" value="0" decimalPlaces="0" maxlength="5" />                	
+	                			<p:outputLabel styleClass="testo" for="input7" value="Azienda :"/>
+	                			<p:inputText id="input7"/>	
+	                			<p:outputLabel styleClass="testo" for="onemenu4" value="Città :"/>
+				                <p:selectOneMenu id="onemenu4">
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="Avellino" itemValue="1" />
+				                    <f:selectItem itemLabel="Benevento" itemValue="2" />
+				                    <f:selectItem itemLabel="Caserta" itemValue="3" />
+				                    <f:selectItem itemLabel="Napoli" itemValue="4" />
+				                    <f:selectItem itemLabel="Salerno" itemValue="5" />
+				                </p:selectOneMenu>
+	                			<p:outputLabel styleClass="testo" for="input9" value="CAP :"/>
+	                			<p:inputNumber id="input9" value="0" decimalPlaces="0" maxlength="5" />
+	                			<p:outputLabel styleClass="testo" for="input10" value="Telefono :"/>
+	                			<p:inputNumber id="input10" value="0" decimalPlaces="0" />        
+	                			<p:outputLabel styleClass="testo" for="input11" value="Partita IVA :"/>
+	                			<p:inputNumber id="input11" value="0" decimalPlaces="0" />    
+							</p:panelGrid>
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:commandButton styleClass="bottone" value="Salva" action="#{ProfiloPrivato.buttonSalvaIndirizzo}"  />
+								<p:commandButton styleClass="bottone" value="Annulla" action="#{ProfiloPrivato.buttonAnnulla}"  />
+							</p:panelGrid>
+							</h:form>
+						</p:tab>	
+						<p:tab title="Carta di credito" titleStyleClass="tabNouveau">
+							<h:form id="form_carta">
+								<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">																			
+										<p:outputLabel styleClass="testo" for="onemenu6" value="Tipo di carta :"/>
+						                <p:selectOneMenu id="onemenu6" styleClass="sfondo">  
+						                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+						                    <f:selectItem itemLabel="American Express" itemValue="1" />
+						                    <f:selectItem itemLabel="Visa" itemValue="2" />
+						                    <f:selectItem itemLabel="Master Card" itemValue="3" />
+						                    <f:selectItem itemLabel="Maestro" itemValue="4" />
+						                </p:selectOneMenu>		
+						                <p:outputLabel styleClass="testo" for="input13" value="Numero :"/>
+			                			<p:inputNumber id="input13" value="0" decimalPlaces="0" />    
+			                			<p:outputLabel styleClass="testo" for="input14" value="Titolare :"/>
+			                			<p:inputText id="input14"/>	
+			                	</p:panelGrid>
+			               		<p:panelGrid columns="3" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+			               				<p:outputLabel styleClass="testo" for="onemenu7" value="Scadenza :"/>
+						                <p:selectOneMenu id="onemenu7" styleClass="sfondo">  
+						                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+						                    <f:selectItem itemLabel="Gennaio" itemValue="1" />
+						                    <f:selectItem itemLabel="Febbraio" itemValue="2" />
+						                    <f:selectItem itemLabel="Marzo" itemValue="3" />
+						                    <f:selectItem itemLabel="Aprile" itemValue="4" />
+						                    <f:selectItem itemLabel="Maggio" itemValue="5" />
+						                    <f:selectItem itemLabel="Giugno" itemValue="6" />
+						                    <f:selectItem itemLabel="Luglio" itemValue="7" />
+						                    <f:selectItem itemLabel="Agosto" itemValue="8" />
+						                    <f:selectItem itemLabel="Settembre" itemValue="9" />
+						                    <f:selectItem itemLabel="Ottobre" itemValue="10" />
+						                    <f:selectItem itemLabel="Novembre" itemValue="11" />
+						                    <f:selectItem itemLabel="Dicembre" itemValue="12" />
+						                </p:selectOneMenu>	
+						                <p:selectOneMenu id="onemenu8" styleClass="sfondo">  
+						                    <f:selectItem itemLabel="Seleziona" itemValue="" />
+						                    <f:selectItem itemLabel="2018" itemValue="2018" />
+						                    <f:selectItem itemLabel="2019" itemValue="2019" />
+						                    <f:selectItem itemLabel="2020" itemValue="2020" />
+						                </p:selectOneMenu>	
+			               		</p:panelGrid>
+			                	<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+						                       <p:outputLabel styleClass="testo" value="Utilizzabile per prenotazione di lavoro :"/>
+								               <p:selectBooleanCheckbox value="false" />
+			 								   <p:outputLabel styleClass="testo" value="usa carta per il mio premio "/>
+								               <p:selectBooleanCheckbox value="false" />
+			                			
+								</p:panelGrid>
+								<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+									<p:commandButton styleClass="bottone" value="Salva" action="#{ProfiloPrivato.buttonSalvaCarta}" />
+									<p:commandButton styleClass="bottone" value="Annulla"  action="#{ProfiloPrivato.buttonAnnulla}"/>
+								</p:panelGrid>
+							</h:form>
+						</p:tab>	
+						<p:tab title="Pagamenti" titleStyleClass="tabNouveau">
+							<h:form id="form_pagamenti">
+								<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">																			
+										<p:outputLabel styleClass="testo" for="onemenu9" value="Pagamenti online :"/>
+						                <p:selectOneMenu id="onemenu9" styleClass="sfondo">  
+						                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+						                    <f:selectItem itemLabel="Si" itemValue="1" />
+						                    <f:selectItem itemLabel="No" itemValue="0" />						                    
+						                </p:selectOneMenu>		
+						                <p:outputLabel styleClass="testo" for="onemenu10" value="Quando si preferisce pagare :"/>
+						                <p:selectOneMenu id="onemenu10" styleClass="sfondo">  
+						                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+						                    <f:selectItem itemLabel="Arrivo" itemValue="0" />
+						                    <f:selectItem itemLabel="Partenza" itemValue="1" />						                    
+						                </p:selectOneMenu>	
+			                	</p:panelGrid>               		
+								<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+									<p:commandButton styleClass="bottone" value="Salva" action="#{ProfiloPrivato.buttonSalvaPagamento}" />
+									<p:commandButton styleClass="bottone" value="Annulla" action="#{ProfiloPrivato.buttonAnnulla}" />
+								</p:panelGrid>
+							</h:form>
+						</p:tab>
+						<p:tab title="Il tuo modo di viaggiare" titleStyleClass="tabNouveau">
+							<h:form id="form_modoviaggiare">
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">																			
+									<p:outputLabel styleClass="testo" for="onemenu11" value="Fumatori :"/>
+					                <p:selectOneMenu id="onemenu11" styleClass="sfondo">  
+					                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+					                    <f:selectItem itemLabel="Si" itemValue="1" />
+					                    <f:selectItem itemLabel="No" itemValue="0" />					                    
+					                </p:selectOneMenu>		
+					                <p:outputLabel styleClass="testo" for="onemenu12" value="Stelle :"/>
+					                <p:selectOneMenu id="onemenu12" styleClass="sfondo">  
+					                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+					                    <f:selectItem itemLabel="1" itemValue="1" />
+					                    <f:selectItem itemLabel="2" itemValue="2" />
+					                    <f:selectItem itemLabel="3" itemValue="3" />
+					                    <f:selectItem itemLabel="4" itemValue="4" />
+					                    <f:selectItem itemLabel="5" itemValue="5" />
+					                </p:selectOneMenu>	
+		                	</p:panelGrid>               		
+		                	<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+		                				   <p:outputLabel styleClass="testo" value="Strutture per ospiti disabili  :"/>
+							               <p:selectBooleanCheckbox value="false" />
+							               <p:outputLabel styleClass="testo" value="Ristorante :"/>
+							               <p:selectBooleanCheckbox value="false" />
+							               <p:outputLabel styleClass="testo" value="Connessione internet :"/>
+							               <p:selectBooleanCheckbox value="false" />
+							               <p:outputLabel styleClass="testo" value="Camere non fumatori :"/>
+							               <p:selectBooleanCheckbox value="false" />
+							               <p:outputLabel styleClass="testo" value="Palestra :"/>
+							               <p:selectBooleanCheckbox value="false" />
+							               <p:outputLabel styleClass="testo" value="Disponibilità di camere familiari :"/>
+							               <p:selectBooleanCheckbox value="false" />
+							               <p:outputLabel styleClass="testo" value="Animali ammessi :"/>
+							               <p:selectBooleanCheckbox value="false" />
+							               <p:outputLabel styleClass="testo" value="Parcheggio :"/>
+							               <p:selectBooleanCheckbox value="false" />
+							               <p:outputLabel styleClass="testo" value="Spa e benessere :"/>
+							               <p:selectBooleanCheckbox value="false" />
+							               <p:outputLabel styleClass="testo" value="Wifi :"/>
+							               <p:selectBooleanCheckbox value="false" />
+							               <p:outputLabel styleClass="testo" value="Piscina coperta :"/>
+							               <p:selectBooleanCheckbox value="false" />
+							               <p:outputLabel styleClass="testo" value="Navetta aeroportuale :"/>
+							               <p:selectBooleanCheckbox value="false" />
+							               <p:outputLabel styleClass="testo" value="Connessione wifi gratuita :"/>
+							               <p:selectBooleanCheckbox value="false" />
+							               <p:outputLabel styleClass="testo" value="Bar :"/>
+							               <p:selectBooleanCheckbox value="false" />
+							               <p:outputLabel styleClass="testo" value="Deposito bagagli :"/>
+							               <p:selectBooleanCheckbox value="false" />
+							               <p:outputLabel styleClass="testo" value="Reception aperta 24 ore :"/>
+							               <p:selectBooleanCheckbox value="false" />
+		                	</p:panelGrid>
+		                	<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">																			
+									<p:outputLabel styleClass="testo" for="onemenu13" value="per chi prenota :"/>
+					                <p:selectOneMenu id="onemenu13" styleClass="sfondo">  
+					                    <f:selectItem itemLabel="Select One" itemValue="-1" />
+					                    <f:selectItem itemLabel="Per me" itemValue="1" />
+					                    <f:selectItem itemLabel="Per altri" itemValue="0" />					                    
+					                </p:selectOneMenu>		
+					                <p:outputLabel styleClass="testo" for="onemenu14" value="Valuta :"/>
+					                <p:selectOneMenu id="onemenu14" styleClass="sfondo">  
+					                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+					                    <f:selectItem itemLabel="Euro" itemValue="Euro" />
+					                    <f:selectItem itemLabel="Altro" itemValue="Altro" />					                    
+					                </p:selectOneMenu>	
+		                	</p:panelGrid>  
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:commandButton styleClass="bottone" value="Salva" action="#{ProfiloPrivato.buttonSalvaViaggio}" />
+								<p:commandButton styleClass="bottone" value="Annulla" action="#{ProfiloPrivato.buttonAnnulla}" />
+							</p:panelGrid>
+							</h:form>
+						</p:tab>
+						<p:tab title="Gruppi di viaggio" titleStyleClass="tabNouveau">
+							<h:form id="form_gruppi">
+							<p:panelGrid columns="1" columnClasses="ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="margin-bottom:40px">				
+								<p:commandButton styleClass="bottone" value="Crea nuovo gruppo" action="#{ProfiloPrivato.buttonNuovoGruppo}"  />
+							</p:panelGrid>
+						
+							<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
+						        <f:facet name="header">
+						            Gruppi di viaggio
+						        </f:facet>
+						        <p:column headerText="Nome del gruppo">
+						            <h:outputText value="#{car.id}" />
+						        </p:column>
+						 
+						        <p:column headerText="Numero di camere">
+						            <h:outputText value="#{car.year}" />
+						        </p:column>
+						 
+						        <p:column headerText="Numero di adulti ">
+						            <h:outputText value="#{car.brand}" />
+						        </p:column>
+						 
+						        <p:column headerText="Numero di bambini">
+						            <h:outputText value="#{car.color}" />
+						        </p:column>
+						        
+						         <p:column headerText="Seleziona" style="width:70px;text-align: center">
+						            <p:commandButton icon="ui-icon-circle-arrow-e" title="View" action="#{ProfiloPrivato.buttonActionGruppo(car)}" />					           
+						        </p:column>
+						        
+						    </p:dataTable>
+						    </h:form>
+						</p:tab>
+						</p:tabView>
+					</p:fieldset>
+					
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  responsive="true">
+				        <p:commandButton value="Yes"  styleClass="bottone ui-confirmdialog-yes" icon="ui-icon-check" />
+				        <p:commandButton value="No"  styleClass="bottone ui-confirmdialog-no" icon="ui-icon-close" />
+				    </p:confirmDialog>	
+		
+	 </ui:define>
+</ui:composition>

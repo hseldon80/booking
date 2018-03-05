@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="templates/templateInformazioni.xhtml">
+	<ui:define name="content">
+		<h:outputStylesheet library="css" name="/resources/css/stylesheet.css" />
+		<h:outputStylesheet library="css" name="/resources/css/navigation.css" />
+		<h:outputStylesheet library="js" name="/resources/js/locale.js" />		
+		
+		<h:form id="form">
+						
+			
+			<p:fieldset styleClass="fieldset" legend="Lago" toggleable="true" toggleSpeed="500" style="margin-top:20px">	
+				<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">					
+					<p:outputLabel styleClass="testo" for="input" value="Nome : *"/>
+                	<p:inputText id="input" value=" "/>
+					<p:outputLabel styleClass="testo" for="input2" value="Distanza : *"/>
+                	<p:inputNumber id="input2" value="0" decimalPlaces="0" />
+				</p:panelGrid>				
+				<p:panelGrid columns="3" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<p:commandButton styleClass="bottone" value="Salva" action="#{Interesse.buttonSalvaLago}" />
+					<p:commandButton styleClass="bottone" value="Annulla" action="#{Interesse.buttonAnnulla}" />
+					<p:commandButton styleClass="bottone" value="Elimina" action="#{Interesse.buttonEliminaLago}">
+						<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+					</p:commandButton>				
+				</p:panelGrid>
+			</p:fieldset>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  responsive="true">
+		        <p:commandButton value="Yes" type="button" styleClass="bottone ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="No" type="button" styleClass="bottone ui-confirmdialog-no" icon="ui-icon-close" />
+		    </p:confirmDialog>
+		</h:form>
+	 </ui:define>
+</ui:composition>

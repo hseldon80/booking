@@ -1,0 +1,551 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="templates/templateStruttura.xhtml">
+	<ui:define name="content">
+		<h:outputStylesheet library="css" name="/resources/css/stylesheet.css" />
+		<h:outputStylesheet library="css" name="/resources/css/navigation.css" />
+		<h:outputStylesheet library="js" name="/resources/js/locale.js" />		
+		
+		<h:form id="form">
+						
+			
+			<p:fieldset styleClass="fieldset" legend="Camera " toggleable="true" toggleSpeed="500" style="margin-top:20px">		
+				<p:tabView prependId="false" cache="false" style="width:100%">
+					<p:tab title="Camera" titleStyleClass="tabNouveau">
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:outputLabel styleClass="testo" for="input" value="Nome :*"/>
+		                	<p:inputText id="input" value=" "/>					
+							<p:outputLabel styleClass="testo" for="onemenu" value="Tipologia : *"/>
+			                <p:selectOneMenu id="onemenu" styleClass="sfondo">  			                    
+			                    <f:selectItem itemLabel="Singola" itemValue="1" />
+			                    <f:selectItem itemLabel="Doppia" itemValue="2" />
+			                    <f:selectItem itemLabel="Matrimoniale" itemValue="3" />
+			                </p:selectOneMenu>
+			                <p:outputLabel styleClass="testo" value="Fumatori :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" for="input2" value="Capienza : *"/>
+		                	<p:inputNumber id="input2" value="0" decimalPlaces="0" />
+						</p:panelGrid>
+						<p:panelGrid columns="3" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:commandButton styleClass="bottone" value="Salva" action="#{Camera.buttonSalva}"  />
+							<p:commandButton styleClass="bottone" value="Annulla" action="#{Camera.buttonAnnulla}"  />
+							<p:commandButton styleClass="bottone" value="Elimina" action="#{Camera.buttonElimina}" >
+								<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+							</p:commandButton>
+						</p:panelGrid>
+					</p:tab>
+					<p:tab title="Configurazione letti" titleStyleClass="tabNouveau">
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-1,ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="margin-bottom:40px">				
+						<p:outputLabel styleClass="testo" for="onemenu2" value="Tipologia : *"/>
+		                <p:selectOneMenu id="onemenu2" styleClass="sfondo">  		                    
+		                    <f:selectItem itemLabel="Singolo" itemValue="1" />
+		                    <f:selectItem itemLabel="Doppio" itemValue="2" />
+		                    <f:selectItem itemLabel="Matrimoniale" itemValue="3" />
+		                </p:selectOneMenu>		
+		                <p:outputLabel styleClass="testo" for="input3" value="Quantità : *"/>
+		                <p:inputNumber id="input3" value="0" decimalPlaces="0" />
+		                <p:outputLabel styleClass="testo" value=""/>
+						<p:commandButton styleClass="bottone" value="Aggiungi configurazione letto" action="#{Camera.buttonSalvaLetti}" />
+					</p:panelGrid>					
+					<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
+				        <f:facet name="header">
+				            Letti
+				        </f:facet>
+				        <p:column headerText="Tipologia">
+				            <h:outputText value="#{car.id}" />
+				        </p:column>
+				 
+				        <p:column headerText="Quantità">
+				            <h:outputText value="#{car.year}" />
+				        </p:column>
+				        
+				         <p:column headerText="Elimina" style="width:70px;text-align: center">
+				            <p:commandButton styleClass="bottone" icon="ui-icon-circle-close" title="Delete" action="#{Camera.buttonEliminaLetti(car)}" >
+				            		<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+				            </p:commandButton>					           
+				        </p:column>
+				        
+				    </p:dataTable>
+				</p:tab>
+				<p:tab title="Dimensione" titleStyleClass="tabNouveau">
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:outputLabel styleClass="testo" for="input4" value="Dimensione : *"/>
+		                	<p:inputNumber id="input4" value="0" decimalPlaces="0" />
+							<p:outputLabel styleClass="testo" for="onemenu3" value="unità di misura : *"/>
+			                <p:selectOneMenu id="onemenu3" styleClass="sfondo">  			                    
+			                    <f:selectItem itemLabel="Metri" itemValue="1" />
+			                    <f:selectItem itemLabel="Yard" itemValue="2" />
+			                    <f:selectItem itemLabel="Foot" itemValue="3" />
+			                </p:selectOneMenu>
+			      
+							
+						</p:panelGrid>
+						<p:panelGrid columns="3" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:commandButton styleClass="bottone" value="Salva" action="#{Camera.buttonSalvaDimensioni}"  />
+							<p:commandButton styleClass="bottone" value="Annulla"  action="#{Camera.buttonAnnulla}" />							
+						</p:panelGrid>
+					</p:tab>
+					<p:tab title="Dotazioni" titleStyleClass="tabNouveau">
+						<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">							
+							<p:outputLabel styleClass="testo" value="lettini e culle per bambini :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina con vista :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Stand appendiabiti :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina all’ultimo piano :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Stendibiancheria :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina di acqua salata :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Letto pieghevole :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Zona acqua bassa :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Divano letto :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Aria condizionata "/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Pattumiere :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina privata a uso esclusivo :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Piscina riscaldata :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Asciugatrice :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piscina a sfioro :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Armadio/guardaroba :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Copertura per piscina :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Moquette :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Teli :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Cabina armadio :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Vasca immersione ad acqua fredda :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Letti lunghi :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Asciugamani per chi usa la piscina :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Ventilatore :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Camino :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Ingresso indipendente :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Riscaldamento :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Cassaforte :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Disponibilità di camere comunicanti :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Divano :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Ferro da stiro :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Insonorizzazione :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Ferro e asse da stiro :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Zona soggiorno :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vasca idromassaggio :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Stirapantaloni :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Zanzariera :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Lavatrice :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Pavimenti in marmo :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Parquet o pavimento in legno :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Scrivania :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Pigiama :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Soluzioni anallergiche :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Presa elettrica vicino al letto :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							
+							<p:outputLabel styleClass="testo" value="Prodotti per pulizie :"/>
+							<p:selectBooleanCheckbox value="false" />	
+							<p:outputLabel styleClass="testo" value="Adattatore :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Coperte elettriche :"/>
+							<p:selectBooleanCheckbox value="false" />	
+							<p:outputLabel styleClass="testo" value="Cuscino di piume :"/>
+							<p:selectBooleanCheckbox value="false" />	
+							
+								
+							<p:outputLabel styleClass="testo" value="Cuscino non di piume :"/>
+							<p:selectBooleanCheckbox value="false" />	
+							<p:outputLabel styleClass="testo" value="Cuscino ipoallergico  :"/>
+							<p:selectBooleanCheckbox value="false" />
+						</p:panelGrid>
+					
+					
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:commandButton styleClass="bottone" value="Salva" action="#{Camera.buttonSalvaDotazioni}"  />
+							<p:commandButton styleClass="bottone" value="Annulla" action="#{Camera.buttonAnnulla}"  />
+						</p:panelGrid>
+				</p:tab>	
+				<p:tab title="Bagno" titleStyleClass="tabNouveau">
+						<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">							
+							<p:outputLabel styleClass="testo" value="Bagno privato :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Bagno in comune :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Carta igienica :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vasca da bagno per disabili :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Campanella di emergenza nel bagno :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="WC rialzato :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Lavabo più basso :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Sedia per doccia :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Doccia con accesso per sedie a rotelle :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Cabina doccia :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="WC con maniglioni :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vasca :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Bidet :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vasca o doccia :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Accappatoio :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Prodotti da bagno in omaggio :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Servizi igienici aggiuntivi :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Asciugacapelli :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vasca da bagno con idromassaggio :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Servizi igienici in comune :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Sauna :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Doccia :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Pantofole :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="WC :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Bagno aggiuntivo :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Spazzolino da denti :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Shampoo :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Balsamo :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Bagnoschiuma :"/>
+							<p:selectBooleanCheckbox value="false" />	
+							<p:outputLabel styleClass="testo" value="Cuffia da doccia :"/>
+							<p:selectBooleanCheckbox value="false" />					
+						</p:panelGrid>
+					
+					
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:commandButton styleClass="bottone" value="Salva" action="#{Camera.buttonSalvaBagno}"  />
+							<p:commandButton styleClass="bottone" value="Annulla" action="#{Camera.buttonAnnulla}"  />
+						</p:panelGrid>
+				</p:tab>	
+				<p:tab title="Media e tecnologia" titleStyleClass="tabNouveau">
+						<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">							
+							<p:outputLabel styleClass="testo" value="PS4 :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Wii U :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Xbox One :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Computer :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Console per videogiochi :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Nintendo Wii :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="PlayStation2 :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="PlayStation3 :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Xbox 360 :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Computer portatile :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="iPad :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Canali via cavo :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Lettore CD :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Lettore DVD :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Fax :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Docking station per iPod :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Cassaforte per computer portatile :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="TV a schermo piatto :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Canali pay per view :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Radio :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Canali satellitari :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Telefono :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="TV :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Videoregistratore :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Videogiochi :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Lettore blu-ray :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="WiFi portatile :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Smartphone :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Servizio streaming :"/>
+							<p:selectBooleanCheckbox value="false" />											
+						</p:panelGrid>
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:commandButton styleClass="bottone" value="Salva" action="#{Camera.buttonSalvaMedia}"  />
+							<p:commandButton styleClass="bottone" value="Annulla" action="#{Camera.buttonAnnulla}"  />
+						</p:panelGrid>
+				</p:tab>
+				<p:tab title="Ristorazione " titleStyleClass="tabNouveau">
+						<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">							
+							<p:outputLabel styleClass="testo" value="Zona pranzo :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Tavolo da pranzo :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Calici da vino :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Bottiglia d’acqua :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Bottiglia d’acqua in camera :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Cioccolatini o biscotti :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Cioccolatini o biscotti in camera :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Frutta :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Frutta in camera :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vino/champagne :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vino/champagne disponibile presso la struttura :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Barbecue :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Forno :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piano cottura :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Tostapane :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Lavastoviglie :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Bollitore elettrico :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Zona pranzo all’aperto :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Arredamento da esterno :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Minibar :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Cucina :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Angolo cottura :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Utensili da cucina :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Forno a microonde :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Frigorifero :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Macchina da caffè :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Bollitore tè/macchina caffè :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Seggiolone :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Servizi extra :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Accesso ad executive lounge :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Sveglia :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Sveglia telefonica :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Sveglia o sveglia telefonica :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Biancheria per la casa :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Asciugamani/lenzuola disponibili a pagamento :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Asciugamani :"/>
+							<p:selectBooleanCheckbox value="false" />
+																					
+						</p:panelGrid>
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:commandButton styleClass="bottone" value="Salva" action="#{Camera.buttonSalvaRistorazione}"  />
+							<p:commandButton styleClass="bottone" value="Annulla" action="#{Camera.buttonAnnulla}"  />
+						</p:panelGrid>
+				</p:tab>
+				<p:tab title="Esterni e vista" titleStyleClass="tabNouveau">
+						<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">							
+							<p:outputLabel styleClass="testo" value="Balcone :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Patio :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vista :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Terrazza :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Vista città :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vista giardino :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vista lago :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vista luogo di interesse :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Vista montagna :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vista piscina :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vista fiume :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vista mare :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Vista cortile interno :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Vista su strada tranquilla :"/>
+							<p:selectBooleanCheckbox value="false" />
+																					
+						</p:panelGrid>
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:commandButton styleClass="bottone" value="Salva" action="#{Camera.buttonSalvaVista}"  />
+							<p:commandButton styleClass="bottone" value="Annulla" action="#{Camera.buttonAnnulla}"  />
+						</p:panelGrid>
+				</p:tab>
+				<p:tab title="Accessibilità" titleStyleClass="tabNouveau">
+						<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">							
+							<p:outputLabel styleClass="testo" value="Accessibile tramite ascensore :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Camera situata al piano terra :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Camera accessibile in sedia a rotelle :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Piani superiori accessibili tramite ascensore :"/>
+							<p:selectBooleanCheckbox value="false" />
+							
+							<p:outputLabel styleClass="testo" value="Piani superiori accessibili solo tramite scale :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Edificio indipendente :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Appartamento privato in edificio :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Semi-indipendente :"/>
+							<p:selectBooleanCheckbox value="false" />
+																					
+						</p:panelGrid>
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:commandButton styleClass="bottone" value="Salva" action="#{Camera.buttonSalvaAccessibilita}"  />
+							<p:commandButton styleClass="bottone" value="Annulla" action="#{Camera.buttonAnnulla}"  />
+						</p:panelGrid>
+				</p:tab>
+				<p:tab title="Intrattenimento" titleStyleClass="tabNouveau">
+						<p:panelGrid columns="6" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">							
+							<p:outputLabel styleClass="testo" value="Cancelletti di sicurezza per bambini :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Giochi da tavolo/puzzle :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Libri, dvd o musica per bambini :"/>
+							<p:selectBooleanCheckbox value="false" />
+							<p:outputLabel styleClass="testo" value="Copri prese di sicurezza per bambini :"/>
+							<p:selectBooleanCheckbox value="false" />
+																					
+						</p:panelGrid>
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:commandButton styleClass="bottone" value="Salva" action="#{Camera.buttonSalvaIntrattenimento}"  />
+							<p:commandButton styleClass="bottone" value="Annulla"  action="#{Camera.buttonAnnulla}" />
+						</p:panelGrid>
+				</p:tab>
+				</p:tabView>
+			</p:fieldset>
+			
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  responsive="true">
+		        <p:commandButton value="Yes"  styleClass="bottone ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="No"  styleClass="bottone ui-confirmdialog-no" icon="ui-icon-close" />
+		    </p:confirmDialog>
+			
+			
+		</h:form>
+	 </ui:define>
+</ui:composition>

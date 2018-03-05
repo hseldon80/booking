@@ -1,0 +1,17 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://java.sun.com/jsf/core">
+
+
+        <h:form>
+		    <p:menu styleClass="menubar sfondo" style="width : 95%">
+		    	<p:menuitem styleClass="menucoloum" value="Home" url="./Home.xhtml"/>
+	 					<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Giudizi degli ospiti" url="./Giudizio_Business.xhtml"/>
+	 					<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Giudizi complessivo" url="./Giudizio_Complessivo.xhtml"/>
+	 					<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Esperienza degli ospiti" url="./Esperienza_Business.xhtml"/>
+           	</p:menu> 	     
+        </h:form>
+</ui:composition>

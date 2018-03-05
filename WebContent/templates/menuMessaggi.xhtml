@@ -1,0 +1,23 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://java.sun.com/jsf/core">
+
+
+        <h:form>
+		    <p:menu styleClass="menubar sfondo" style="width : 95%">
+		    	<p:menuitem rendered="#{sessionBean1.utente_business == 0}" styleClass="menucoloum" value="Profilo" url="./Profilo_Privato.xhtml"/> 			    	
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 0}" styleClass="menucoloum" value="Trova Offerte" url="./Trova_Offerte.xhtml"/>
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 0}" styleClass="menucoloum" value="Prenotazione" url="./Prenotazione_Privato.xhtml"/>           		           		
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 0}" styleClass="menucoloum" value="Preventivi" url="./Preventivi_Privato.xhtml"/>
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 0}" styleClass="menucoloum" value="Promozioni" url="./Promozioni_Privato.xhtml"/>
+           		<p:menuitem rendered="#{sessionBean1.utente_business == 0}" styleClass="menucoloum" value="Giudizio" url="Giudizio_Privato.xhtml"/>
+		    	<p:menuitem rendered="#{sessionBean1.utente_business == 1 or sessionBean1.utente_business == 0}" styleClass="menucoloum" value="Messaggi" url="./Messaggi.xhtml"/>
+		    	<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Argomenti popolari" url="./Argomento_Messaggi.xhtml"/>			    	     
+		    	<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Preferenze messaggi" url="./Preferenze_Messaggi.xhtml"/>
+		    	<p:menuitem rendered="#{sessionBean1.utente_business == 1}" styleClass="menucoloum" value="Messaggio Personale" url="./Messaggio_Personale.xhtml"/>
+           	</p:menu> 	     
+        </h:form>
+</ui:composition>

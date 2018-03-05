@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="templates/templateStruttura.xhtml">
+	<ui:define name="content">
+		<h:outputStylesheet library="css" name="/resources/css/stylesheet.css" />
+		<h:outputStylesheet library="css" name="/resources/css/navigation.css" />
+		<h:outputStylesheet library="js" name="/resources/js/locale.js" />		
+		
+		<h:form id="form">
+						
+			
+			<p:fieldset styleClass="fieldset" legend="Struttura " toggleable="true" toggleSpeed="500" style="margin-top:20px">		
+				<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<p:outputLabel styleClass="testo" for="input" value="Nome struttura : *"/>
+                	<p:inputText id="input" value=" "/>
+					<p:outputLabel styleClass="testo" for="input2" value="Indirizzo : *"/>
+                	<p:inputText id="input2" value=" "/>
+					<p:outputLabel styleClass="testo" for="onemenu" value="Comune : *"/>
+	                <p:selectOneMenu id="onemenu" styleClass="sfondo">  
+	                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+	                    <f:selectItem itemLabel="Avellino" itemValue="1" />
+	                    <f:selectItem itemLabel="Benevento" itemValue="2" />
+	                    <f:selectItem itemLabel="Caserta" itemValue="3" />
+	                    <f:selectItem itemLabel="Napoli" itemValue="4" />
+	                    <f:selectItem itemLabel="Salerno" itemValue="5" />
+	                </p:selectOneMenu>
+	                <p:outputLabel styleClass="testo" for="onemenu2" value="Tipologia struttura : *"/>
+	                <p:selectOneMenu id="onemenu2" styleClass="sfondo">  
+	                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+	                    <f:selectItem itemLabel="Hotel" itemValue="1" />
+	                    <f:selectItem itemLabel="Albergo" itemValue="2" />
+	                    <f:selectItem itemLabel="Camping" itemValue="3" />
+	                </p:selectOneMenu>
+	                <p:outputLabel styleClass="testo" for="onemenu3" value="Stelle : * "/>
+	                <p:selectOneMenu id="onemenu3" styleClass="sfondo">  						
+	                    <f:selectItem itemLabel="1" itemValue="1" />
+	                    <f:selectItem itemLabel="2" itemValue="2" />
+	                    <f:selectItem itemLabel="3" itemValue="3" />
+	                    <f:selectItem itemLabel="4" itemValue="4" />
+	                    <f:selectItem itemLabel="5" itemValue="5" />
+	                </p:selectOneMenu>
+	                <p:outputLabel styleClass="testo" for="input3" value="PMS :"/>
+                	<p:inputText id="input3" value=" "/>
+                	<p:outputLabel styleClass="testo" for="input4" value="Channel manager :"/>
+                	<p:inputText id="input4" value=" "/>
+				</p:panelGrid>
+				<p:panelGrid columns="3" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<p:commandButton styleClass="bottone" value="Salva"  action="#{Struttura.buttonSalva}"/>
+					<p:commandButton styleClass="bottone" value="Annulla"  action="#{Struttura.buttonAnnulla}" />
+					<p:commandButton styleClass="bottone" value="Elimina"  action="#{Struttura.buttonElimina}">
+						<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+					</p:commandButton>
+				</p:panelGrid>
+			
+				
+			</p:fieldset>
+			
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  responsive="true">
+		        <p:commandButton value="Yes"  styleClass="bottone ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="No"  styleClass="bottone ui-confirmdialog-no" icon="ui-icon-close" />
+		    </p:confirmDialog>
+			
+			
+		</h:form>
+	 </ui:define>
+</ui:composition>

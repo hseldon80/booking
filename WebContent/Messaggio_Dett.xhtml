@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="templates/templateMessaggi.xhtml">
+	<ui:define name="content">
+		<h:outputStylesheet library="css" name="/resources/css/stylesheet.css" />
+		<h:outputStylesheet library="css" name="/resources/css/navigation.css" />
+		<h:outputStylesheet library="js" name="/resources/js/locale.js" />		
+		
+		<h:form id="form">
+						
+			
+			<p:fieldset styleClass="fieldset" legend="Messaggi " toggleable="true" toggleSpeed="500" style="margin-top:20px">		
+				<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<p:outputLabel styleClass="testo" for="onemenu" value="OneMenu"/>
+	                <p:selectOneMenu id="onemenu" styleClass="sfondo">  
+	                    <f:selectItem itemLabel="Select One" itemValue="" />
+	                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+	                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
+	                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+	                </p:selectOneMenu>	                
+					<p:outputLabel styleClass="testo" for="input" value="Input"/>
+                	<p:inputText id="input"/>
+                	<p:outputLabel styleClass="testo" for="area" value="Textarea"/>
+                	<p:inputTextarea styleClass="testoSx" readonly="true" id="area" rows="10" cols="100" value=""/>
+                	<p:outputLabel styleClass="testo" value="Checkbox"/>
+					<p:selectBooleanCheckbox value="" />
+                	<p:outputLabel styleClass="testo" for="onemenu2" value="OneMenu"/>
+	                <p:selectOneMenu id="onemenu2" styleClass="sfondo">  
+	                    <f:selectItem itemLabel="Select One" itemValue="" />
+	                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+	                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
+	                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+	                </p:selectOneMenu>	     
+				</p:panelGrid>
+				<p:panelGrid columns="3" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<p:commandButton styleClass="bottone" value="Salva" type="button" />
+					<p:commandButton styleClass="bottone" value="Annulla" type="button" />
+					<p:commandButton styleClass="bottone" value="Elimina" type="button">
+						<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+					</p:commandButton>
+				</p:panelGrid>
+			
+				
+			</p:fieldset>
+			
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  responsive="true">
+		        <p:commandButton value="Yes" type="button" styleClass="bottone ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="No" type="button" styleClass="bottone ui-confirmdialog-no" icon="ui-icon-close" />
+		    </p:confirmDialog>
+			
+			
+		</h:form>
+	 </ui:define>
+</ui:composition>
