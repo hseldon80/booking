@@ -17,54 +17,63 @@
 			
 			<p:fieldset styleClass="fieldset" legend="Nuova condizione di cancellazione " toggleable="true" toggleSpeed="500" style="margin-top:20px">	
 				<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-					<p:outputLabel styleClass="testo" value="Checkbox"/>
-					<p:selectBooleanCheckbox value="" />
-					<p:outputLabel styleClass="testo" for="onemenu" value="OneMenu"/>
+					<p:outputLabel styleClass="testo" value="Cancellazione gratuita :"/>
+					<p:selectBooleanCheckbox value="false" />
+					<p:outputLabel styleClass="testo" value="Temporizzazione diritto di cancellazione :"/>
+					<p:selectBooleanCheckbox value="false" />
+					
+					<p:outputLabel styleClass="testo" for="onemenu" value="Quanto tempo prima :"/>
 	                <p:selectOneMenu id="onemenu" styleClass="sfondo">  
-	                    <f:selectItem itemLabel="Select One" itemValue="" />
-	                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-	                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-	                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+	                    <f:selectItem itemLabel="Select One" itemValue="-1" />
+	                    <f:selectItem itemLabel="Mai" itemValue="0" />
+	                    <f:selectItem itemLabel="Un giorno prima" itemValue="1" />
+	                    <f:selectItem itemLabel="Una settimana prima" itemValue="2" />
 	                </p:selectOneMenu>	                
-                	<p:outputLabel styleClass="testo" for="onemenu2" value="OneMenu"/>
+                	<p:outputLabel styleClass="testo" for="onemenu2" value="Addebito oltre il limite :"/>
 	                <p:selectOneMenu id="onemenu2">
-	                    <f:selectItem itemLabel="Select One" itemValue="" />
-	                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-	                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-	                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+	                    <f:selectItem itemLabel="Select One" itemValue="-1" />
+	                    <f:selectItem itemLabel="No" itemValue="0" />
+	                    <f:selectItem itemLabel="10% del costo" itemValue="1" />
+	                    <f:selectItem itemLabel="50% del costo" itemValue="2" />
+	                    <f:selectItem itemLabel="70% del costo" itemValue="3" />
+	                    <f:selectItem itemLabel="Tutto" itemValue="4" />
 	                </p:selectOneMenu>
-	                <p:outputLabel styleClass="testo" for="onemenu3" value="OneMenu"/>
+	                <p:outputLabel styleClass="testo" for="onemenu3" value="Addebito per mancata presentazione :"/>
 	                <p:selectOneMenu id="onemenu3">
-	                    <f:selectItem itemLabel="Select One" itemValue="" />
-	                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-	                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-	                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+	                    <f:selectItem itemLabel="Select One" itemValue="-1" />
+	                    <f:selectItem itemLabel="No" itemValue="0" />
+	                    <f:selectItem itemLabel="10% del costo" itemValue="1" />
+	                    <f:selectItem itemLabel="50% del costo" itemValue="2" />
+	                    <f:selectItem itemLabel="70% del costo" itemValue="3" />
+	                    <f:selectItem itemLabel="Tutto" itemValue="4" />
 	                </p:selectOneMenu>
-	                <p:outputLabel styleClass="testo" value="Checkbox"/>
-					<p:selectBooleanCheckbox value="" />
-					<p:outputLabel styleClass="testo" value="Checkbox"/>
-					<p:selectBooleanCheckbox value="" />
-					<p:outputLabel styleClass="testo" for="onemenu4" value="OneMenu"/>
+	                <p:outputLabel styleClass="testo" value="Pagamento anticipato :"/>
+					<p:selectBooleanCheckbox value="false" />
+					<p:outputLabel styleClass="testo" value="Non rimborsabile :"/>
+					<p:selectBooleanCheckbox value="false" />
+					<p:outputLabel styleClass="testo" for="onemenu4" value="Periodo di tolleranza :"/>
 	                <p:selectOneMenu id="onemenu4">
-	                    <f:selectItem itemLabel="Select One" itemValue="" />
-	                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-	                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-	                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+	                    <f:selectItem itemLabel="Select One" itemValue="-1" />
+	                    <f:selectItem itemLabel="Nessuno" itemValue="0" />
+	                    <f:selectItem itemLabel="4 ore" itemValue="1" />
+	                    <f:selectItem itemLabel="8 ore" itemValue="2" />
+	                    <f:selectItem itemLabel="12 ore" itemValue="3" />
+	                    <f:selectItem itemLabel="Un giorno" itemValue="4" />
 	                </p:selectOneMenu>
-	                <p:outputLabel styleClass="testo" value="Checkbox"/>
-					<p:selectBooleanCheckbox value="" />
+	                <p:outputLabel styleClass="testo" value="Attivo :"/>
+					<p:selectBooleanCheckbox value="false" />
 				</p:panelGrid>
 					<p:panelGrid columns="3" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-					<p:commandButton styleClass="bottone" value="Salva" type="button" />
-					<p:commandButton styleClass="bottone" value="Annulla" type="button" />
-					<p:commandButton styleClass="bottone" value="Elimina" type="button">
+					<p:commandButton styleClass="bottone" value="Salva" action="#{Condizioni.buttonSalvaCancellazione}" />
+					<p:commandButton styleClass="bottone" value="Annulla" action="#{Condizioni.buttonAnnulla}"  />
+					<p:commandButton styleClass="bottone" value="Elimina" action="#{Condizioni.buttonEliminaCancellazione}" >
 						<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
 					</p:commandButton>
 				</p:panelGrid>
 			</p:fieldset>
 			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  responsive="true">
-		        <p:commandButton value="Yes" type="button" styleClass="bottone ui-confirmdialog-yes" icon="ui-icon-check" />
-		        <p:commandButton value="No" type="button" styleClass="bottone ui-confirmdialog-no" icon="ui-icon-close" />
+		        <p:commandButton value="Yes"  styleClass="bottone ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="No"  styleClass="bottone ui-confirmdialog-no" icon="ui-icon-close" />
 		    </p:confirmDialog>
 		</h:form>
 	 </ui:define>

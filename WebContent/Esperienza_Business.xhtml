@@ -11,100 +11,83 @@
 		<h:outputStylesheet library="css" name="/resources/css/stylesheet.css" />
 		<h:outputStylesheet library="css" name="/resources/css/navigation.css" />
 		<h:outputStylesheet library="js" name="/resources/js/locale.js" />		
-		
-		<h:form id="form">
-						
 			
 			<p:fieldset styleClass="fieldset" legend="Esperienza" toggleable="true" toggleSpeed="500" style="margin-top:20px">			
+				<h:form id="form">
 				<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
 				
-					<p:outputLabel styleClass="testo" for="onemenu" value="OneMenu"/>
+					<p:outputLabel styleClass="testo" for="onemenu" value="Ospite :"/>
 	                <p:selectOneMenu id="onemenu" styleClass="sfondo">  
-	                    <f:selectItem itemLabel="Select One" itemValue="" />
-	                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-	                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-	                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+	                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+	                    <f:selectItem itemLabel="Ospite 1" itemValue="1" />
+	                    <f:selectItem itemLabel="Ospite 2" itemValue="2" />
+	                    <f:selectItem itemLabel="Ospite 3" itemValue="3" />
 	                </p:selectOneMenu>	    
-	                <p:outputLabel styleClass="testo" for="onemenu2" value="OneMenu"/>
+	                <p:outputLabel styleClass="testo" for="onemenu2" value="Categoria commento :"/>
 	                <p:selectOneMenu id="onemenu2" styleClass="sfondo">  
-	                    <f:selectItem itemLabel="Select One" itemValue="" />
-	                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-	                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-	                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+	                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+	                    <f:selectItem itemLabel="Categoria 1" itemValue="1" />
+	                    <f:selectItem itemLabel="Categoria 2" itemValue="2" />
+	                    <f:selectItem itemLabel="Categoria 3" itemValue="3" />
 	                </p:selectOneMenu>	
-	                <p:outputLabel styleClass="testo" for="calendar" value="Calendar"/>
+	                <p:outputLabel styleClass="testo" for="calendar" value="Data prenotazione :"/>
                 	<p:calendar id="calendar">
                 		<f:convertDateTime pattern="dd/MM/yyyy"/>
                 	</p:calendar>                               	
 				</p:panelGrid>
 				<p:panelGrid columns="1" columnClasses="ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-					<p:commandButton styleClass="bottone" value="Ricerca" type="button" />
+					<p:commandButton update="tabellaricerca" styleClass="bottone" value="Ricerca" actionListener="#{GiudiziBusiness.buttonRicercaEsperienza}" />
 				</p:panelGrid>
 			
-				<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
+				<p:dataTable id="tabellaricerca" var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
 				        <f:facet name="header">
-				            DataTable
+				            Esperienza ospiti
 				        </f:facet>
-				        <p:column headerText="Id">
+				        <p:column headerText="Categoria commento">
 				            <h:outputText value="#{car.id}" />
 				        </p:column>
 				 
-				        <p:column headerText="Year">
+				        <p:column headerText="Data prenotazione">
 				            <h:outputText value="#{car.year}" />
 				        </p:column>
 				 
-				        <p:column headerText="Brand">
+				        <p:column headerText="Ospite">
 				            <h:outputText value="#{car.brand}" />
-				        </p:column>
-				 
-				        <p:column headerText="Color">
-				            <h:outputText value="#{car.color}" />
-				        </p:column>
-				        
-				        <p:column headerText="Id2">
-				            <h:outputText value="#{car.id}" />
-				        </p:column>
-				 
-				        <p:column headerText="Year2">
-				            <h:outputText value="#{car.year}" />
-				        </p:column>
-				 
-				        <p:column headerText="Brand2">
-				            <h:outputText value="#{car.brand}" />
-				        </p:column>
-				 
-				        <p:column headerText="Color2">
-				            <h:outputText value="#{car.color}" />
 				        </p:column>
 				        
 				        <p:column headerText="Esperienza" style="width:70px;text-align: center">				            
-				            <p:commandButton styleClass="bottone" id="dialog" icon="ui-icon-extlink" onclick="PF('dlg').show()"/>				            				          
+				            <p:commandButton update=":form_giudizio:carDetail" styleClass="bottone" id="dialog" icon="ui-icon-extlink" oncomplete="PF('dlg').show()">
+				            	<f:setPropertyActionListener value="#{car}" target="#{GiudiziBusiness.selected}" />
+				            </p:commandButton>				            				          
 				        </p:column>
 				        
 				    </p:dataTable>	
+				    </h:form>
 				    
 				    <p:dialog header="Dettaglio Esperienza" widgetVar="dlg" resizable="false" draggable="false" responsive="true" >
-		                <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-8,ui-grid-col-8">
-		                    <p:outputLabel styleClass="testo" value="Number"/>
+		                <h:form id="form_giudizio">
+		                <p:panelGrid id="carDetail" columns="2" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-4,ui-grid-col-8">
+		                    <p:outputLabel styleClass="testo" value="Ospite :"/>
 		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
 		
-		                    <p:outputLabel styleClass="testo" value="Number"/>
+		                    <p:outputLabel styleClass="testo" value="Data prenotazione :"/>
 		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
 		                    
-		                    <p:outputLabel styleClass="testo" value="Number"/>
+		                    <p:outputLabel styleClass="testo" value="Categoria commento :"/>
 		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
 		
-							<p:outputLabel styleClass="testo" for="area" value="Textarea"/>
-		                	<p:inputTextarea styleClass="testoSx" readonly="true" id="area" rows="5" cols="50" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"/>
+							<p:outputLabel styleClass="testo" for="area" value="Commento :"/>
+		                	<p:inputTextarea styleClass="testoSx" readonly="true" id="area" rows="10" cols="100" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"/>
 		                    
 		                    
 		                    <f:facet name="footer">
-		                        <p:commandButton styleClass="bottone" value="Chiudi" type="button" onclick="PF('dlg').hide()"/>
+		                        <p:commandButton styleClass="bottone" value="Chiudi" onclick="PF('dlg').hide()"/>
 		                    </f:facet>  
 		                </p:panelGrid>
+		                </h:form>
 		            </p:dialog>
 						    
 			</p:fieldset>
-		</h:form>
+		
 	 </ui:define>
 </ui:composition>

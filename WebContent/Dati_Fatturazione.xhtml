@@ -17,32 +17,32 @@
 			
 			<p:fieldset styleClass="fieldset" legend="Dati Fatturazione" toggleable="true" toggleSpeed="500" style="margin-top:20px">
 				<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid testo">
-					<p:outputLabel styleClass="testo" for="input" value="Input"/>
-                	<p:inputText id="input"/>
-                	<p:outputLabel styleClass="testo" for="input2" value="Input"/>
-                	<p:inputText id="input2"/>	
-                	<p:outputLabel styleClass="testo" for="input3" value="Input"/>
-                	<p:inputText id="input3"/>	
-                	<p:outputLabel styleClass="testo" for="input4" value="Number"/>
-                	<p:inputNumber id="input4" value="" decimalPlaces="0" />
-                	<p:outputLabel styleClass="testo" for="onemenu" value="OneMenu"/>
-	                <p:selectOneMenu id="onemenu" styleClass="sfondo">  
-	                    <f:selectItem itemLabel="Select One" itemValue="" />
-	                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-	                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-	                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-	                </p:selectOneMenu>				                				
-					<p:outputLabel styleClass="testo" value="Checkbox"/>
-					<p:selectBooleanCheckbox styleClass="testoSx" value="" />				
+					<p:outputLabel styleClass="testo" for="input" value="Ragione sociale :*"/>
+                	<p:inputText id="input" value=" "/>
+                	<p:outputLabel styleClass="testo" for="input2" value="All’attenzione di : *"/>
+                	<p:inputText id="input2" value=" "/>	
+                	<p:outputLabel styleClass="testo" for="input3" value="Indirizzo : *"/>
+                	<p:inputText id="input3" value=" "/>	
+                	<p:outputLabel styleClass="testo" for="input4" value="Cap : *"/>
+                	<p:inputNumber id="input4" value="0" decimalPlaces="0" />
+                	<p:outputLabel styleClass="testo" for="onemenu" value="Città : *"/>
+	                <p:selectOneMenu id="onemenu" styleClass="sfondo">  	                    
+	                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+	                    <f:selectItem itemLabel="Avellino" itemValue="1" />
+	                    <f:selectItem itemLabel="Benevento" itemValue="2" />
+	                    <f:selectItem itemLabel="Caserta" itemValue="3" />
+	                    <f:selectItem itemLabel="Napoli" itemValue="4" />
+	                    <f:selectItem itemLabel="Salerno" itemValue="5" />	                
+	                </p:selectOneMenu>				                												
 				</p:panelGrid>
 				<p:panelGrid columns="3" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-					<p:commandButton styleClass="bottone" value="Salva" type="button" />
-					<p:commandButton styleClass="bottone" value="Annulla" type="button" />		            
+					<p:commandButton styleClass="bottone" value="Salva" action="#{Fatture.buttonSalva}" />
+					<p:commandButton styleClass="bottone" value="Annulla" action="#{Fatture.buttonAnnulla}" />		            
 				</p:panelGrid>			
 			</p:fieldset>
 			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  responsive="true">
-		        <p:commandButton value="Yes" type="button" styleClass="bottone ui-confirmdialog-yes" icon="ui-icon-check" />
-		        <p:commandButton value="No" type="button" styleClass="bottone ui-confirmdialog-no" icon="ui-icon-close" />
+		        <p:commandButton value="Yes" styleClass="bottone ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="No" styleClass="bottone ui-confirmdialog-no" icon="ui-icon-close" />
 		    </p:confirmDialog>
 		</h:form>
 	 </ui:define>

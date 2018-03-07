@@ -17,50 +17,38 @@
 			
 			<p:fieldset styleClass="fieldset" legend="Camere Disponibili" toggleable="true" toggleSpeed="500" style="margin-top:20px">				
 					<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-						<p:outputLabel styleClass="testo" value="Calendar"/>
+						<p:outputLabel styleClass="testo" value="Chek-in :"/>
 	                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXX"/>
-	                	<p:outputLabel styleClass="testo" value="Calendar"/>
+	                	<p:outputLabel styleClass="testo" value="Chek-out :"/>
 	                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXX"/>
+	                	<p:outputLabel styleClass="testo" value="Promozione ;"/>
+	                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXX"/>
+	                	<p:outputLabel styleClass="testo" value="Sconto:"/>
+	                	<p:outputLabel styleClass="testoSx" value="XX%"/>
 					</p:panelGrid>
 				
 					<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
 				        <f:facet name="header">
-				            DataTable
+				            Camere
 				        </f:facet>
-				        <p:column headerText="Id">
+				        <p:column headerText="Nome Camera">
 				            <h:outputText value="#{car.id}" />
 				        </p:column>
 				 
-				        <p:column headerText="Year">
+				        <p:column headerText="Persone Ospitabili">
 				            <h:outputText value="#{car.year}" />
 				        </p:column>
 				 
-				        <p:column headerText="Brand">
+				        <p:column headerText="Dimensione">
 				            <h:outputText value="#{car.brand}" />
 				        </p:column>
 				 
-				        <p:column headerText="Color">
-				            <h:outputText value="#{car.color}" />
-				        </p:column>
-				        
-				        <p:column headerText="Id2">
-				            <h:outputText value="#{car.id}" />
-				        </p:column>
-				 
-				        <p:column headerText="Year2">
-				            <h:outputText value="#{car.year}" />
-				        </p:column>
-				 
-				        <p:column headerText="Brand2">
-				            <h:outputText value="#{car.brand}" />
-				        </p:column>
-				 
-				        <p:column headerText="Color2">
+				        <p:column headerText="Tipologia di camera">
 				            <h:outputText value="#{car.color}" />
 				        </p:column>
 				        
 				        <p:column headerText="Seleziona" style="width:70px;text-align: center">
-				            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" />					           
+				            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" action="#{PromozionePrivato.buttonActionCamera(car)}"/>					           
 				        </p:column>
 				        
 				    </p:dataTable>		

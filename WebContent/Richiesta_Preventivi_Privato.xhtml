@@ -12,102 +12,81 @@
 		<h:outputStylesheet library="css" name="/resources/css/navigation.css" />
 		<h:outputStylesheet library="js" name="/resources/js/locale.js" />		
 		
-		<h:form id="form">
+		
 						
 			
 			<p:fieldset styleClass="fieldset" legend="Camera " toggleable="true" toggleSpeed="500" style="margin-top:20px">		
 				<p:tabView prependId="false" cache="false" style="width:100%">
-					<p:tab title="Godfather Part I" titleStyleClass="tabNouveau">
-						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-							<p:outputLabel styleClass="testo" value="Input"/>
-		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXX"/>
-		                	<p:outputLabel styleClass="testo" value="Input"/>
-		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXX"/>
-		                	<p:outputLabel styleClass="testo" value="Input"/>
-		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXX"/>
-		                	<p:outputLabel styleClass="testo" value="Input"/>
-		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXX"/>
-		                	<p:outputLabel styleClass="testo" value="Input"/>
-		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXX"/>
-							<p:outputLabel styleClass="testo" for="input" value="Number"/>
-		                	<p:inputNumber id="input" value="" decimalPlaces="0" />
-		                	<p:outputLabel styleClass="testo" for="input2" value="Number"/>
-		                	<p:inputNumber id="input2" value="" decimalPlaces="0" />
-		                	<p:outputLabel styleClass="testo" for="area6" value="Textarea"/>
-		                	<p:inputTextarea styleClass="testoSx" id="area6" rows="10" cols="100" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"/>
-						</p:panelGrid>
-						<p:panelGrid columns="3" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-							<p:commandButton styleClass="bottone" value="Richiedi Preventivo" type="button" />
-							<p:commandButton styleClass="bottone" value="Annulla" type="button" />							
-						</p:panelGrid>
+					<p:tab title="Camera" titleStyleClass="tabNouveau">
+						<h:form id="form_camera">
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:outputLabel styleClass="testo" value="Check-in :"/>
+			                	<p:outputLabel styleClass="testoSx" value="XXXXXXXX"/>
+			                	<p:outputLabel styleClass="testo" value="Check-out :"/>
+			                	<p:outputLabel styleClass="testoSx" value="XXXXXXXX"/>
+			                	<p:outputLabel styleClass="testo" value="Tipologia di camera :"/>
+			                	<p:outputLabel styleClass="testoSx" value="XXXXXXXX"/>
+			                	<p:outputLabel styleClass="testo" value="Camera :"/>
+			                	<p:outputLabel styleClass="testoSx" value="XXXXXXXX"/>
+			                	<p:outputLabel styleClass="testo" value="Prezzo per notte"/>
+			                	<p:outputLabel styleClass="testoSx" value="XXXXXXXX"/>
+								<p:outputLabel styleClass="testo" for="input" value="Numero di adulti :"/>
+			                	<p:inputNumber id="input" value="0" decimalPlaces="0" minValue="1" maxValue="10" maxlength="2" />
+			                	<p:outputLabel styleClass="testo" for="input2" value="Numero di bambini :"/>
+			                	<p:inputNumber id="input2" value="0" decimalPlaces="0" minValue="1" maxValue="10" maxlength="2"/>
+			                	<p:outputLabel styleClass="testo" for="area6" value="Messaggio alla struttura :"/>
+			                	<p:inputTextarea styleClass="testoSx" id="area6" rows="10" cols="100" value=" "/>
+							</p:panelGrid>
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:commandButton styleClass="bottone" value="Richiedi Preventivo" action="#{TrovaOfferte.buttonSalvaPreventivo}" />
+								<p:commandButton styleClass="bottone" value="Annulla" action="#{TrovaOfferte.buttonAnnulla}" />							
+							</p:panelGrid>
+						</h:form>
 					</p:tab>
-					<p:tab title="Godfather Part II" titleStyleClass="tabNouveau">
-					<p:panelGrid columns="2" columnClasses="ui-grid-col-1,ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="margin-bottom:40px">				
-						<p:galleria value="#{imagesView.images}" var="image"  panelWidth="270" panelHeight="150" showCaption="false" >
-    						<p:graphicImage width="100%" height="100%" name="images/#{image}" alt="Image Description for #{image}" title="#{image}"/>
-						</p:galleria>	
-					</p:panelGrid>										
+					<p:tab title="Foto camera" titleStyleClass="tabNouveau">
+					<h:form id="form_foto">
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-1,ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="margin-bottom:40px">				
+							<p:galleria value="#{imagesView.images}" var="image"  panelWidth="500" panelHeight="313" showCaption="false" >
+	    						<p:graphicImage name="images/#{image}" alt="Image Description for #{image}" title="#{image}"/>
+							</p:galleria>	
+						</p:panelGrid>	
+					</h:form>									
 				</p:tab>
-				<p:tab title="Godfather Part III" titleStyleClass="tabNouveau">
-						<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
-				        <f:facet name="header">
-				            DataTable
-				        </f:facet>
-				        <p:column headerText="Id">
-				            <h:outputText value="#{car.id}" />
-				        </p:column>
-				 
-				        <p:column headerText="Year">
-				            <h:outputText value="#{car.year}" />
-				        </p:column>
-				 
-				        <p:column headerText="Brand">
-				            <h:outputText value="#{car.brand}" />
-				        </p:column>
-				 
-				        <p:column headerText="Color">
-				            <h:outputText value="#{car.color}" />
-				        </p:column>
-				        
-				        <p:column headerText="Id2">
-				            <h:outputText value="#{car.id}" />
-				        </p:column>
-				 
-				        <p:column headerText="Year2">
-				            <h:outputText value="#{car.year}" />
-				        </p:column>
-				 
-				        <p:column headerText="Brand2">
-				            <h:outputText value="#{car.brand}" />
-				        </p:column>
-				 
-				        <p:column headerText="Color2">
-				            <h:outputText value="#{car.color}" />
-				        </p:column>
-				        				        
-				        
-				    </p:dataTable>	
+				<p:tab title="Servizi inclusi" titleStyleClass="tabNouveau">
+						<h:form id="form_servizi">
+							<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
+					        <f:facet name="header">
+					            Servizi
+					        </f:facet>
+					        <p:column headerText="Servizi inclusi">
+					            <h:outputText value="#{car.id}" />
+					        </p:column>					        
+					    </p:dataTable>	
+				    	</h:form>
 					</p:tab>
-					<p:tab title="Godfather Part IV" titleStyleClass="tabNouveau">
-						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">													
-							<p:graphicImage width="100" height="100"  name="images/card_file.png"/> 
-							<p:outputLabel value=""/>
-						</p:panelGrid>
+					<p:tab title="Foto struttura" titleStyleClass="tabNouveau">
+						<h:form id="form_profilo_struttura">
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">													
+								<p:graphicImage width="100" height="100"  name="images/card_file.png"/> 
+								<p:outputLabel value=""/>
+							</p:panelGrid>
+						</h:form>
 					</p:tab>			
-					<p:tab title="Godfather Part V" titleStyleClass="tabNouveau">
-						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">					               
-							<p:outputLabel styleClass="testo" for="area" value="Textarea"/>
-		                	<p:inputTextarea styleClass="testoSx" readonly="true" id="area" rows="10" cols="100" value=""/>
-		                	<p:outputLabel styleClass="testo" for="area2" value="Textarea"/>
-		                	<p:inputTextarea styleClass="testoSx" readonly="true" id="area2" rows="10" cols="100" value=""/>
-		                	<p:outputLabel styleClass="testo" for="area3" value="Textarea"/>
-		                	<p:inputTextarea styleClass="testoSx" readonly="true" id="area3" rows="10" cols="100" value=""/>
-		                	<p:outputLabel styleClass="testo" for="area4" value="Textarea"/>
-		                	<p:inputTextarea styleClass="testoSx" readonly="true" id="area4" rows="10" cols="100" value=""/>
-						</p:panelGrid>		
+					<p:tab title="Messaggi della struttura" titleStyleClass="tabNouveau">
+						<h:form id="form_messaggi">
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">					               
+								<p:outputLabel styleClass="testo" for="area" value="Messaggio struttura :"/>
+			                	<p:inputTextarea styleClass="testoSx" readonly="true" id="area" rows="10" cols="100" value=""/>
+			                	<p:outputLabel styleClass="testo" for="area2" value="Messaggio all'ospite :"/>
+			                	<p:inputTextarea styleClass="testoSx" readonly="true" id="area2" rows="10" cols="100" value=""/>
+			                	<p:outputLabel styleClass="testo" for="area3" value="Informazioni sulla zona :"/>
+			                	<p:inputTextarea styleClass="testoSx" readonly="true" id="area3" rows="10" cols="100" value=""/>
+			                	<p:outputLabel styleClass="testo" for="area4" value="Valore aggiunto per le famiglie :"/>
+			                	<p:inputTextarea styleClass="testoSx" readonly="true" id="area4" rows="10" cols="100" value=""/>
+							</p:panelGrid>		
+						</h:form>
 					</p:tab>					
 				</p:tabView>
-			</p:fieldset>
-		</h:form>
+			</p:fieldset>		
 	 </ui:define>
 </ui:composition>

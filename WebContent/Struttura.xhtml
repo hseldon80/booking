@@ -43,6 +43,10 @@
 				            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" action="#{Struttura.buttonAction(car)}" />					           
 				        </p:column>
 				        
+				        <p:column headerText="Scegli Struttura" style="width:70px;text-align: center">				            
+				            <p:commandButton styleClass="bottone" icon="ui-icon-extlink" action="#{Struttura.buttonScegli(car)}" />				            				          
+				        </p:column>
+				        
 				    </p:dataTable>		
 			</p:fieldset>
 		</h:form>

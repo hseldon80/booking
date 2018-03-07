@@ -17,46 +17,30 @@
 			
 			<p:fieldset styleClass="fieldset" legend="Dati Bancari" toggleable="true" toggleSpeed="500" style="margin-top:20px">
 					<p:panelGrid columns="1" columnClasses="ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="margin-bottom:40px">				
-						<p:commandButton styleClass="bottone" value="Aggiungi dati bancari" type="button" />
+						<p:commandButton styleClass="bottone" value="Aggiungi dati bancari" action="#{DatiBancari.buttonNuovo}"/>
 					</p:panelGrid>					
 					<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
 				        <f:facet name="header">
-				            DataTable
+				            Dati Bancari
 				        </f:facet>
-				        <p:column headerText="Id">
+				        <p:column headerText="Codice IBAN">
 				            <h:outputText value="#{car.id}" />
 				        </p:column>
 				 
-				        <p:column headerText="Year">
+				        <p:column headerText="Nome e Cognome">
 				            <h:outputText value="#{car.year}" />
 				        </p:column>
 				 
-				        <p:column headerText="Brand">
+				        <p:column headerText="Banca">
 				            <h:outputText value="#{car.brand}" />
 				        </p:column>
 				 
-				        <p:column headerText="Color">
-				            <h:outputText value="#{car.color}" />
-				        </p:column>
-				        
-				        <p:column headerText="Id2">
-				            <h:outputText value="#{car.id}" />
-				        </p:column>
-				 
-				        <p:column headerText="Year2">
-				            <h:outputText value="#{car.year}" />
-				        </p:column>
-				 
-				        <p:column headerText="Brand2">
-				            <h:outputText value="#{car.brand}" />
-				        </p:column>
-				 
-				        <p:column headerText="Color2">
+				        <p:column headerText="Attivo">
 				            <h:outputText value="#{car.color}" />
 				        </p:column>
 				        
 				        <p:column headerText="Seleziona" style="width:70px;text-align: center">
-				            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" />					           
+				            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" action="#{DatiBancari.buttonAction(car)}" />					           
 				        </p:column>
 				        
 				    </p:dataTable>		

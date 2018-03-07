@@ -12,153 +12,124 @@
 		<h:outputStylesheet library="css" name="/resources/css/navigation.css" />
 		<h:outputStylesheet library="js" name="/resources/js/locale.js" />		
 		
-		<h:form id="form">
+		
 						
 			
 			<p:fieldset styleClass="fieldset" legend="Accetta/Rifiuta Preventivo " toggleable="true" toggleSpeed="500" style="margin-top:20px">		
 				
 				<p:tabView prependId="false" cache="false" style="width:100%">
-					<p:tab title="Godfather Part I" titleStyleClass="tabNouveau">
-						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-							<p:outputLabel styleClass="testo" value="OneMenu"/>
-							<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-			                
-			                <p:outputLabel styleClass="testo" value="Calendar"/>
-		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-		                	
-		                	<p:outputLabel styleClass="testo" value="OneMenu"/>
-			                <p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-			                
-			                <p:outputLabel styleClass="testo" value="Calendar"/>
-			                <p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-			                
-		                	<p:outputLabel styleClass="testo" value="Calendar"/>
-		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-		                	
-		                	<p:outputLabel styleClass="testo" value="Number"/>
-		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-		                	
-		                	<p:outputLabel styleClass="testo" value="Number"/>
-		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-		                	
-		                	<p:outputLabel styleClass="testo" value="Number"/>
-		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-		                	
-		                	<p:outputLabel styleClass="testo" value="Number"/>
-		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-		                	
-		                	<p:outputLabel styleClass="testo" value="Number"/>
-		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-		                	
-		                	<p:outputLabel styleClass="testo" for="area" value="Textarea"/>
-		                	<p:inputTextarea styleClass="testoSx" readonly="true" id="area" rows="5" cols="50" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"/>
-		                	
-		                	
-		                	
-						</p:panelGrid>
-						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-							<p:commandButton styleClass="bottone" value="Accetta" type="button" onclick="PF('dlgAccetta').show()" />
-							<p:commandButton styleClass="bottone" value="Rifiuta" type="button" onclick="PF('dlgRifiuta').show()" />
-						</p:panelGrid>
+					<p:tab title="Preventivo" titleStyleClass="tabNouveau">
+						<h:form id="form_preventivo">
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:outputLabel styleClass="testo" value="Ospite :"/>
+								<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
+				                
+				                <p:outputLabel styleClass="testo" value="Check-in :"/>
+			                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
+			                	
+			                	<p:outputLabel styleClass="testo" value="Check-out :"/>
+				                <p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
+				                
+				                <p:outputLabel styleClass="testo" value="Camera :"/>
+				                <p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
+				                
+			                	<p:outputLabel styleClass="testo" value="Prezzo per notte :"/>
+			                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
+			                	
+			                	<p:outputLabel styleClass="testo" value="Data Preventivo :"/>
+			                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
+			                	
+			                	<p:outputLabel styleClass="testo" value="Numero Adulti :"/>
+			                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
+			                	
+			                	<p:outputLabel styleClass="testo" value="Numero Bambini :"/>
+			                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
+	
+			                	<p:outputLabel styleClass="testo" for="area" value="Messaggio alla struttura :"/>
+			                	<p:inputTextarea styleClass="testoSx" readonly="true" id="area" rows="10" cols="100" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"/>
+			                	
+							</p:panelGrid>
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:commandButton styleClass="bottone" value="Accetta"  onclick="PF('dlgAccetta').show()" />
+								<p:commandButton styleClass="bottone" value="Rifiuta"  onclick="PF('dlgRifiuta').show()" />
+							</p:panelGrid>
+						</h:form>
 					</p:tab>
-					<p:tab title="Godfather Part II" titleStyleClass="tabNouveau">
-					<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
-				        <f:facet name="header">
-				            DataTable
-				        </f:facet>
-				        <p:column headerText="Id">
-				            <h:outputText value="#{car.id}" />
-				        </p:column>
-				 
-				        <p:column headerText="Year">
-				            <h:outputText value="#{car.year}" />
-				        </p:column>
-				 
-				        <p:column headerText="Brand">
-				            <h:outputText value="#{car.brand}" />
-				        </p:column>
-				 
-				        <p:column headerText="Color">
-				            <h:outputText value="#{car.color}" />
-				        </p:column>
-				        
-				        <p:column headerText="Id2">
-				            <h:outputText value="#{car.id}" />
-				        </p:column>
-				 
-				        <p:column headerText="Year2">
-				            <h:outputText value="#{car.year}" />
-				        </p:column>
-				 
-				        <p:column headerText="Brand2">
-				            <h:outputText value="#{car.brand}" />
-				        </p:column>
-				 
-				        <p:column headerText="Color2">
-				            <h:outputText value="#{car.color}" />
-				        </p:column>
-				        
-				        
-				    </p:dataTable>
+					<p:tab title="Servizi inclusi" titleStyleClass="tabNouveau">
+						<h:form id="form_servizi">
+							<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
+						        <f:facet name="header">
+						            Servizi
+						        </f:facet>
+						        <p:column headerText="Servizi inclusi">
+						            <h:outputText value="#{car.id}" />
+						        </p:column>					        
+						    </p:dataTable>	
+					    </h:form>
 				</p:tab>
-				<p:tab title="Godfather Part III" titleStyleClass="tabNouveau">
+				<p:tab title="Promozioni attive" titleStyleClass="tabNouveau">
+					<h:form id="form_promozioni">
 					<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-							<p:outputLabel styleClass="testo" value="OneMenu"/>
-							<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-			                
-			                <p:outputLabel styleClass="testo" value="Calendar"/>
-		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-		                	
-		                	<p:outputLabel styleClass="testo" value="OneMenu"/>
-			                <p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-			                
-			                <p:outputLabel styleClass="testo" value="Calendar"/>
-			                <p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-			                
-		                	<p:outputLabel styleClass="testo" value="Calendar"/>
-		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-		                	
-		                	<p:outputLabel styleClass="testo" value="Number"/>
-		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-		                	
-		                	<p:outputLabel styleClass="testo" value="Number"/>
-		                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
-						</p:panelGrid>
+						<p:outputLabel styleClass="testo" value="Nome promozione :"/>
+						<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
+		                
+		                <p:outputLabel styleClass="testo" value="Sconto :"/>
+	                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
+	                	
+	                	<p:outputLabel styleClass="testo" value="Tipologia :"/>
+		                <p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
+		                
+		                <p:outputLabel styleClass="testo" value="Tariffe di pertinenza :"/>
+		                <p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
+		                
+	                	<p:outputLabel styleClass="testo" value="Camere di pertinenza :"/>
+	                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
+	                	
+	                	<p:outputLabel styleClass="testo" value="Non rimborsabile :"/>
+	                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
+	                	
+	                	<p:outputLabel styleClass="testo" value="Carta di credito obbligatoria :"/>
+	                	<p:outputLabel styleClass="testoSx" value="XXXXXXXXXXX"/>
+					</p:panelGrid>
+					</h:form>
 				</p:tab>	
 				</p:tabView>
 			</p:fieldset>
 			
 			
 			<p:dialog header="Accetta Preventivo" widgetVar="dlgAccetta" resizable="false" draggable="false" responsive="true" >
-                <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-2,ui-grid-col-8">
-                    <p:outputLabel styleClass="testo" for="input1" value="Number"/>
-                	<p:inputNumber id="input1" value="" decimalPlaces="2" />
-	                
-	                <p:outputLabel styleClass="testo" for="input2" value="Number"/>
-                	<p:inputNumber id="input2" value="" decimalPlaces="2" />
-
-                    <p:outputLabel styleClass="testo" for="areaaccetta" value="Textarea"/>
-              		<p:inputTextarea styleClass="testoSx" id="areaaccetta" rows="5" cols="50" value=""/>
-                </p:panelGrid>
-                <p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid testo">
-                		<p:commandButton styleClass="bottone" value="Salva" type="button" onclick="PF('dlgAccetta').hide()"/>
-                    	<p:commandButton styleClass="bottone" value="Annulla" type="button" onclick="PF('dlgAccetta').hide()"/>
-                </p:panelGrid>    
+                <h:form id="form_accetta">
+	                <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-4,ui-grid-col-8">
+	                    <p:outputLabel styleClass="testo" for="input1" value="Prezzo definitivo : *"/>
+	                	<p:inputNumber id="input1" value="0" decimalPlaces="2" />
+		                
+		                <p:outputLabel styleClass="testo" for="input2" value="Commissioni :"/>
+	                	<p:inputNumber id="input2" value="0" decimalPlaces="2" />
+	
+	                    <p:outputLabel styleClass="testo" for="areaaccetta" value="Messaggio all'ospite : "/>
+	              		<p:inputTextarea styleClass="testoSx" id="areaaccetta" rows="5" cols="50" value=" "/>
+	                </p:panelGrid>
+	                <p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid testo">
+	                		<p:commandButton styleClass="bottone" value="Salva" actionListener="#{PreventiviBusiness.buttonSalvaAccetta}"  onclick="PF('dlgAccetta').hide()"/>
+	                    	<p:commandButton styleClass="bottone" value="Annulla"  actionListener="#{PreventiviBusiness.buttonAnnullaAccetta}" onclick="PF('dlgAccetta').hide()"/>
+	                </p:panelGrid>    
+                </h:form>
             </p:dialog>
 			
 			<p:dialog header="Rifiuta Preventivo" widgetVar="dlgRifiuta" resizable="false" draggable="false" responsive="true" >
-                <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-2,ui-grid-col-8">
-                   
-                    <p:outputLabel styleClass="testo" for="arearifiuta" value="Textarea"/>
-           			<p:inputTextarea styleClass="testoSx" id="arearifiuta" rows="5" cols="50" value=""/>
-				</p:panelGrid>
-                <p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid testo">
-            		<p:commandButton styleClass="bottone" value="Salva" type="button" onclick="PF('dlgRifiuta').hide()"/>
-                	<p:commandButton styleClass="bottone" value="Annulla" type="button" onclick="PF('dlgRifiuta').hide()"/>
-             	</p:panelGrid>     
+                <h:form id="form_rifiuta">
+	                <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-4,ui-grid-col-8">                   
+	                    <p:outputLabel styleClass="testo" for="arearifiuta" value="Messaggio all'ospite : *"/>
+	           			<p:inputTextarea styleClass="testoSx" id="arearifiuta" rows="5" cols="50" value=" "/>
+					</p:panelGrid>
+	                <p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid testo">
+	            		<p:commandButton styleClass="bottone" value="Salva"  actionListener="#{PreventiviBusiness.buttonSalvaRifiuta}"  onclick="PF('dlgRifiuta').hide()"/>
+	                	<p:commandButton styleClass="bottone" value="Annulla" actionListener="#{PreventiviBusiness.buttonAnnullaRifiuta}" onclick="PF('dlgRifiuta').hide()"/>
+	             	</p:panelGrid>     
+             	</h:form>
             </p:dialog>
 			
 			
-		</h:form>
+		
 	 </ui:define>
 </ui:composition>

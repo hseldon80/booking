@@ -17,53 +17,29 @@
 			
 			<p:fieldset styleClass="fieldset" legend="Date al completo " toggleable="true" toggleSpeed="500" style="margin-top:20px">		
 				<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">	
-	                <p:outputLabel styleClass="testo" for="calendar" value="Calendar"/>
+	                <p:outputLabel styleClass="testo" for="calendar" value="Data inizio :"/>
                 	<p:calendar id="calendar">
                 		<f:convertDateTime pattern="dd/MM/yyyy"/>
                 	</p:calendar>
-                	<p:outputLabel styleClass="testo" for="calendar2" value="Calendar"/>
+                	<p:outputLabel styleClass="testo" for="calendar2" value="Data fine :"/>
                 	<p:calendar id="calendar2">
                 		<f:convertDateTime pattern="dd/MM/yyyy"/>
                 	</p:calendar>                	
 				</p:panelGrid>
 				<p:panelGrid columns="1" columnClasses="ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-					<p:commandButton styleClass="bottone" value="Ricerca" type="button" />
+					<p:commandButton update="tabellaricerca" styleClass="bottone" value="Verifica camere" actionListener="#{Calendario.buttonRicercaCompleto}"  />
 				</p:panelGrid>
 			
-				<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
+				<p:dataTable id="tabellaricerca" var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
 				        <f:facet name="header">
-				            DataTable
+				            Camere
 				        </f:facet>
-				        <p:column headerText="Id">
+				        <p:column headerText="Camera">
 				            <h:outputText value="#{car.id}" />
 				        </p:column>
 				 
-				        <p:column headerText="Year">
+				        <p:column headerText="Giorno">
 				            <h:outputText value="#{car.year}" />
-				        </p:column>
-				 
-				        <p:column headerText="Brand">
-				            <h:outputText value="#{car.brand}" />
-				        </p:column>
-				 
-				        <p:column headerText="Color">
-				            <h:outputText value="#{car.color}" />
-				        </p:column>
-				        
-				        <p:column headerText="Id2">
-				            <h:outputText value="#{car.id}" />
-				        </p:column>
-				 
-				        <p:column headerText="Year2">
-				            <h:outputText value="#{car.year}" />
-				        </p:column>
-				 
-				        <p:column headerText="Brand2">
-				            <h:outputText value="#{car.brand}" />
-				        </p:column>
-				 
-				        <p:column headerText="Color2">
-				            <h:outputText value="#{car.color}" />
 				        </p:column>
 				        
 				    </p:dataTable>	

@@ -12,37 +12,41 @@
 		<h:outputStylesheet library="css" name="/resources/css/navigation.css" />
 		<h:outputStylesheet library="js" name="/resources/js/locale.js" />		
 		
-		<h:form id="form" enctype="multipart/form-data">
+		
 			<p:fieldset styleClass="fieldset" legend="Foto Profilo" toggleable="true" toggleSpeed="500" style="margin-top:20px">				
 			<p:tabView prependId="false" cache="false" style="width:100%">
-					<p:tab title="Godfather Part I" titleStyleClass="tabNouveau">
+					<p:tab title="Profilo Struttura" titleStyleClass="tabNouveau">
+						<h:form id="form_foto" enctype="multipart/form-data">
 						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-							<p:outputLabel styleClass="testo" value="Input"/>
-							<p:fileUpload value="" mode="simple" skinSimple="true"  />
+							<p:outputLabel styleClass="testo" value="Foto : *"/>
+							<p:fileUpload value="#{Struttura.file}"  mode="simple" skinSimple="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
 							<p:graphicImage width="100" height="100"  name="images/card_file.png"/> 
 							<p:outputLabel value=""/>
-							<p:commandButton styleClass="bottone" value="Salva" type="button" />
-							<p:commandButton styleClass="bottone" value="Elimina" type="button" >
+							<p:commandButton ajax="false" styleClass="bottone" value="Salva" action="#{Struttura.buttonAggiungiFoto}" />
+							<p:commandButton styleClass="bottone" value="Elimina"  action="#{Struttura.buttonEliminaFoto}" >
 								<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
 							</p:commandButton>
 						</p:panelGrid>
-					</p:tab>
-					<p:tab title="Godfather Part II" titleStyleClass="tabNouveau">
-						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-							<p:outputLabel styleClass="testo" for="area" value="Textarea"/>
-		                	<p:inputTextarea styleClass="testoSx" readonly="true" id="area" rows="10" cols="100" value=""/>
-		                </p:panelGrid>
-		                <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-		                	<p:commandButton styleClass="bottone" value="Salva" type="button" />
-							<p:commandButton styleClass="bottone" value="Annulla" type="button" />
-						</p:panelGrid>
+						</h:form>
+					</p:tab>					
+					<p:tab title="Cosa c'è nella foto" titleStyleClass="tabNouveau">
+						<h:form id="form">
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:outputLabel styleClass="testo" for="area" value="Descrizione :*"/>
+			                	<p:inputTextarea styleClass="testoSx" readonly="true" id="area" rows="10" cols="100" value=" "/>
+			                </p:panelGrid>
+			                <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+			                	<p:commandButton styleClass="bottone" value="Salva" action="#{Struttura.buttonSalvaFoto}" />
+								<p:commandButton styleClass="bottone" value="Annulla" action="#{Struttura.buttonAnnullaFoto}" />
+							</p:panelGrid>
+						</h:form>
 					</p:tab>
 				</p:tabView>							
 			</p:fieldset>
 			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  responsive="true">
-		        <p:commandButton value="Yes" type="button" styleClass="bottone ui-confirmdialog-yes" icon="ui-icon-check" />
-		        <p:commandButton value="No" type="button" styleClass="bottone ui-confirmdialog-no" icon="ui-icon-close" />
+		        <p:commandButton value="Yes"  styleClass="bottone ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="No"  styleClass="bottone ui-confirmdialog-no" icon="ui-icon-close" />
 		    </p:confirmDialog>
-		</h:form>
+		
 	 </ui:define>
 </ui:composition>

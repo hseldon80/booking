@@ -17,46 +17,26 @@
 			
 			<p:fieldset styleClass="fieldset" legend="Preferenze Messaggi" toggleable="true" toggleSpeed="500" style="margin-top:20px">
 					<p:panelGrid columns="1" columnClasses="ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="margin-bottom:40px">				
-						<p:commandButton styleClass="bottone" value="Aggiungi template" type="button" />
+						<p:commandButton styleClass="bottone" value="Aggiungi template"  action="#{Messaggi.buttonNuovo}" />
 					</p:panelGrid>					
 					<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
 				        <f:facet name="header">
-				            DataTable
+				            Template
 				        </f:facet>
-				        <p:column headerText="Id">
+				        <p:column headerText="Condizione check-in">
 				            <h:outputText value="#{car.id}" />
 				        </p:column>
 				 
-				        <p:column headerText="Year">
-				            <h:outputText value="#{car.year}" />
-				        </p:column>
-				 
-				        <p:column headerText="Brand">
+				        <p:column headerText="Condizioni check-out ">
 				            <h:outputText value="#{car.brand}" />
 				        </p:column>
 				 
-				        <p:column headerText="Color">
-				            <h:outputText value="#{car.color}" />
-				        </p:column>
-				        
-				        <p:column headerText="Id2">
+				        <p:column headerText="Risposta automatica richiesta parcheggio">
 				            <h:outputText value="#{car.id}" />
-				        </p:column>
-				 
-				        <p:column headerText="Year2">
-				            <h:outputText value="#{car.year}" />
-				        </p:column>
-				 
-				        <p:column headerText="Brand2">
-				            <h:outputText value="#{car.brand}" />
-				        </p:column>
-				 
-				        <p:column headerText="Color2">
-				            <h:outputText value="#{car.color}" />
 				        </p:column>
 				        
 				        <p:column headerText="Seleziona" style="width:70px;text-align: center">
-				            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" />					           
+				            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" action="#{Messaggi.buttonAction(car)}" />					           
 				        </p:column>
 				        
 				    </p:dataTable>		

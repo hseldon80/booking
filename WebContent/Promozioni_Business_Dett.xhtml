@@ -17,86 +17,85 @@
 			
 			<p:fieldset styleClass="fieldset" legend="Promozione" toggleable="true" toggleSpeed="500" style="margin-top:20px">		
 				<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid testo">
-					<p:outputLabel styleClass="testo" for="input" value="Input"/>
-                	<p:inputText id="input"/>	
-					<p:outputLabel styleClass="testo" for="onemenu" value="OneMenu"/>
+					<p:outputLabel styleClass="testo" for="input" value="Nome :*"/>
+                	<p:inputText id="input" value=" "/>	
+					<p:outputLabel styleClass="testo" for="onemenu" value="Camera :*"/>
 	                <p:selectOneMenu id="onemenu">
-	                    <f:selectItem itemLabel="Select One" itemValue="" />
-	                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-	                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-	                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+	                    <f:selectItem itemLabel="Camera 1" itemValue="1" />
+	                    <f:selectItem itemLabel="Camera 2" itemValue="2" />
+	                    <f:selectItem itemLabel="Camera 3" itemValue="3" />
 	                </p:selectOneMenu>
-	                <p:outputLabel styleClass="testo" for="onemenu2" value="OneMenu"/>
+	                <p:outputLabel styleClass="testo" for="onemenu2" value="Tipologia : *"/>
 	                <p:selectOneMenu id="onemenu2">
-	                    <f:selectItem itemLabel="Select One" itemValue="" />
-	                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-	                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-	                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+	                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+	                    <f:selectItem itemLabel="Tipologia 1" itemValue="1" />
+	                    <f:selectItem itemLabel="Tipologia 2" itemValue="2" />
+	                    <f:selectItem itemLabel="Tipologia 3" itemValue="3" />
 	                </p:selectOneMenu>
-	                <p:outputLabel styleClass="testo" for="onemenu3" value="OneMenu"/>
+	                <p:outputLabel styleClass="testo" for="onemenu3" value="Visibilità :"/>
 	                <p:selectOneMenu id="onemenu3">
-	                    <f:selectItem itemLabel="Select One" itemValue="" />
-	                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-	                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-	                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+	                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+	                    <f:selectItem itemLabel="Si" itemValue="1" />
+	                    <f:selectItem itemLabel="No" itemValue="0" />
 	                </p:selectOneMenu>
-	                <p:outputLabel styleClass="testo" for="onemenu4" value="OneMenu"/>
+	                <p:outputLabel styleClass="testo" for="onemenu4" value="Vincolo validità :"/>
 	                <p:selectOneMenu id="onemenu4">
-	                    <f:selectItem itemLabel="Select One" itemValue="" />
-	                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-	                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-	                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+	                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+	                    <f:selectItem itemLabel="Sempre" itemValue="1" />
+	                    <f:selectItem itemLabel="Mai" itemValue="0" />	                    
 	                </p:selectOneMenu>
-	                <p:outputLabel styleClass="testo" for="input2" value="Number"/>
-                	<p:inputNumber id="input2" value="" decimalPlaces="0" />
-                	<p:outputLabel styleClass="testo" value="Checkbox"/>
-					<p:selectBooleanCheckbox value="" />
-					<p:outputLabel styleClass="testo" value="Checkbox"/>
-					<p:selectBooleanCheckbox value="" />				                			
-					<p:outputLabel styleClass="testo" for="calendar" value="Calendar"/>
+	                <p:outputLabel styleClass="testo" for="input2" value="Sconto : *"/>
+                	<p:inputNumber id="input2" value="0" decimalPlaces="0" />
+                	
+                	<p:outputLabel styleClass="testo" value="Tariffe di pertinenza :"/>
+					<p:selectBooleanCheckbox StyleClass="testoSx" value="false" />
+					<p:outputLabel styleClass="testo" value="Camera di pertinenza :"/>
+					<p:selectBooleanCheckbox StyleClass="testoSx" value="false" />				                			
+					<p:outputLabel styleClass="testo" for="calendar" value="Data inizio validità :"/>
                 	<p:calendar id="calendar">
                 		<f:convertDateTime pattern="dd/MM/yyyy"/>
                 	</p:calendar>
-                	<p:outputLabel styleClass="testo" for="calendar2" value="Calendar"/>
+                	<p:outputLabel styleClass="testo" for="calendar2" value="Data fine validità :"/>
                 	<p:calendar id="calendar2">
                 		<f:convertDateTime pattern="dd/MM/yyyy"/>
                 	</p:calendar>		
                 	<p:outputLabel styleClass="testo" value="Giorni della settimana"/>							
 				</p:panelGrid>
-				<p:panelGrid columns="14" columnClasses="ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-					<p:outputLabel styleClass="testo" value="Checkbox"/>
-					<p:selectBooleanCheckbox styleClass="testoSx" value="" />
-					<p:outputLabel styleClass="testo" value="Checkbox"/>
-					<p:selectBooleanCheckbox StyleClass="testoSx"  value="" />
-					<p:outputLabel styleClass="testo" value="Checkbox"/>
-					<p:selectBooleanCheckbox StyleClass="testoSx"  value="" />
-					<p:outputLabel styleClass="testo" value="Checkbox"/>
-					<p:selectBooleanCheckbox StyleClass="testoSx"  value="" />
-					<p:outputLabel styleClass="testo" value="Checkbox"/>
-					<p:selectBooleanCheckbox StyleClass="testoSx"  value="" />
-					<p:outputLabel styleClass="testo" value="Checkbox"/>
-					<p:selectBooleanCheckbox StyleClass="testoSx"  value="" />
-					<p:outputLabel styleClass="testo" value="Checkbox"/>
-					<p:selectBooleanCheckbox StyleClass="testoSx"  value="" />	 	
+				<p:panelGrid columns="15" columnClasses="ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0,ui-grid-col-0" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<p:outputLabel styleClass="testo" value=" "/>
+					<p:outputLabel styleClass="testo" value="Domenica"/>
+					<p:selectBooleanCheckbox StyleClass="testoSx"  value="false" />
+					<p:outputLabel styleClass="testo" value="Lunedi"/>
+					<p:selectBooleanCheckbox styleClass="testoSx" value="false" />
+					<p:outputLabel styleClass="testo" value="Martedi"/>
+					<p:selectBooleanCheckbox StyleClass="testoSx"  value="false" />
+					<p:outputLabel styleClass="testo" value="Mercoledi"/>
+					<p:selectBooleanCheckbox StyleClass="testoSx"  value="false" />
+					<p:outputLabel styleClass="testo" value="Giovedi"/>
+					<p:selectBooleanCheckbox StyleClass="testoSx"  value="false" />
+					<p:outputLabel styleClass="testo" value="Venerdi"/>
+					<p:selectBooleanCheckbox StyleClass="testoSx"  value="false" />
+					<p:outputLabel styleClass="testo" value="Sabato"/>
+					<p:selectBooleanCheckbox StyleClass="testoSx"  value="false" />		
 				</p:panelGrid>
 				<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-					<p:outputLabel styleClass="testo" for="calendar3" value="Calendar"/>
+					<p:outputLabel styleClass="testo" for="calendar3" value="Non rimborsabile :"/>
                 	<p:calendar id="calendar3">
                 		<f:convertDateTime pattern="dd/MM/yyyy"/>
                 	</p:calendar>		
-                	<p:outputLabel styleClass="testo" for="calendar4" value="Calendar"/>
+                	<p:outputLabel styleClass="testo" for="calendar4" value="Visibilità sul sito :"/>
                 	<p:calendar id="calendar4">
                 		<f:convertDateTime pattern="dd/MM/yyyy"/>
                 	</p:calendar>		
-                	<p:outputLabel styleClass="testo" for="calendar5" value="Calendar"/>
+                	<p:outputLabel styleClass="testo" for="calendar5" value="Orario promozione :"/>
                 	<p:calendar id="calendar5" pattern="HH:mm" timeOnly="true"  />	
-                	<p:outputLabel styleClass="testo" value="Checkbox"/>
-					<p:selectBooleanCheckbox StyleClass="testoSx"  value="" />								
+                	<p:outputLabel styleClass="testo" value="Carta credito obbligatoria :"/>
+					<p:selectBooleanCheckbox StyleClass="testoSx"  value="false" />								
 				</p:panelGrid>
 				<p:panelGrid columns="3" columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-					<p:commandButton styleClass="bottone" value="Salva" type="button" />
-					<p:commandButton styleClass="bottone" value="Annulla" type="button" />
-					<p:commandButton styleClass="bottone" value="Elimina" type="button">
+					<p:commandButton styleClass="bottone" value="Salva"  action="#{PromozioneBusiness.buttonSalva}" />
+					<p:commandButton styleClass="bottone" value="Annulla" action="#{PromozioneBusiness.buttonAnnulla}" />
+					<p:commandButton styleClass="bottone" value="Elimina" action="#{PromozioneBusiness.buttonElimina}" >
 						<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
 					</p:commandButton>
 				</p:panelGrid>
@@ -105,8 +104,8 @@
 			</p:fieldset>
 			
 			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"  responsive="true">
-		        <p:commandButton value="Yes" type="button" styleClass="bottone ui-confirmdialog-yes" icon="ui-icon-check" />
-		        <p:commandButton value="No" type="button" styleClass="bottone ui-confirmdialog-no" icon="ui-icon-close" />
+		        <p:commandButton value="Yes"  styleClass="bottone ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="No"  styleClass="bottone ui-confirmdialog-no" icon="ui-icon-close" />
 		    </p:confirmDialog>
 		</h:form>
 	 </ui:define>

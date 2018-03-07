@@ -12,222 +12,276 @@
 		<h:outputStylesheet library="css" name="/resources/css/navigation.css" />
 		<h:outputStylesheet library="js" name="/resources/js/locale.js" />		
 		
-		<h:form id="form">
+		
 						
 			
 			<p:fieldset styleClass="fieldset" legend="Condizioni" toggleable="true" toggleSpeed="500" style="margin-top:20px">
 					<p:tabView prependId="false" cache="false" style="width:100%">
-						<p:tab title="Godfather Part I" titleStyleClass="tabNouveau">
-							<p:panelGrid columns="1" columnClasses="ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="margin-bottom:40px">				
-								<p:commandButton styleClass="bottone" value="Nuova condizione di cancellazione" type="button" />
-							</p:panelGrid>
-							<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
-						        <f:facet name="header">
-						            DataTable
-						        </f:facet>
-						        <p:column headerText="Id">
-						            <h:outputText value="#{car.id}" />
-						        </p:column>
-						 
-						        <p:column headerText="Year">
-						            <h:outputText value="#{car.year}" />
-						        </p:column>
-						 
-						        <p:column headerText="Brand">
-						            <h:outputText value="#{car.brand}" />
-						        </p:column>
-						 
-						        <p:column headerText="Color">
-						            <h:outputText value="#{car.color}" />
-						        </p:column>
-						        
-						        <p:column headerText="Id2">
-						            <h:outputText value="#{car.id}" />
-						        </p:column>
-						 
-						        <p:column headerText="Year2">
-						            <h:outputText value="#{car.year}" />
-						        </p:column>
-						 
-						        <p:column headerText="Brand2">
-						            <h:outputText value="#{car.brand}" />
-						        </p:column>
-						 
-						        <p:column headerText="Color2">
-						            <h:outputText value="#{car.color}" />
-						        </p:column>
-						        
-						        <p:column headerText="Seleziona" style="width:70px;text-align: center">
-						            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" />					           
-						        </p:column>
-						        
-						    </p:dataTable>	
+						<p:tab title="Condizione di cancellazione" titleStyleClass="tabNouveau">
+							<h:form id="form_cancellazione">
+								<p:panelGrid columns="1" columnClasses="ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="margin-bottom:40px">				
+									<p:commandButton styleClass="bottone" value="Nuova condizione di cancellazione" action="#{Condizioni.buttonNuovoCancellazione}"  />
+								</p:panelGrid>
+								<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
+							        <f:facet name="header">
+							            Condizione di cancellazione
+							        </f:facet>
+							        <p:column headerText="Cancellazione gratuita">
+							            <h:outputText value="#{car.id}" />
+							        </p:column>
+							 
+							        <p:column headerText="Pagamento anticipato ">
+							            <h:outputText value="#{car.year}" />
+							        </p:column>
+							 
+							        <p:column headerText="Non rimborsabile ">
+							            <h:outputText value="#{car.brand}" />
+							        </p:column>
+							 
+							        <p:column headerText="Temporizzazione diritto di cancellazione ">
+							            <h:outputText value="#{car.color}" />
+							        </p:column>
+							        
+							        <p:column headerText="Quanto tempo prima ">
+							            <h:outputText value="#{car.id}" />
+							        </p:column>
+
+									<p:column headerText="Attivo ">
+							            <h:outputText value="#{car.id}" />
+							        </p:column>
+
+							        <p:column headerText="Seleziona" style="width:70px;text-align: center">
+							            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" action="#{Condizioni.buttonActionCancellazione(car)}"/>					           
+							        </p:column>
+							        
+							    </p:dataTable>	
+						    </h:form>
 					    </p:tab>	
-					    <p:tab title="Godfather Part II" titleStyleClass="tabNouveau">
-							<p:panelGrid columns="1" columnClasses="ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="margin-bottom:40px">				
-								<p:commandButton styleClass="bottone" value="Nuova condizione di pagamento" type="button" />
-							</p:panelGrid>
-							<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
-						        <f:facet name="header">
-						            DataTable
-						        </f:facet>
-						        <p:column headerText="Id">
-						            <h:outputText value="#{car.id}" />
-						        </p:column>
-						 
-						        <p:column headerText="Year">
-						            <h:outputText value="#{car.year}" />
-						        </p:column>
-						 
-						        <p:column headerText="Brand">
-						            <h:outputText value="#{car.brand}" />
-						        </p:column>
-						 
-						        <p:column headerText="Color">
-						            <h:outputText value="#{car.color}" />
-						        </p:column>
-						        
-						        <p:column headerText="Id2">
-						            <h:outputText value="#{car.id}" />
-						        </p:column>
-						 
-						        <p:column headerText="Year2">
-						            <h:outputText value="#{car.year}" />
-						        </p:column>
-						 
-						        <p:column headerText="Brand2">
-						            <h:outputText value="#{car.brand}" />
-						        </p:column>
-						 
-						        <p:column headerText="Color2">
-						            <h:outputText value="#{car.color}" />
-						        </p:column>
-						        
-						        <p:column headerText="Seleziona" style="width:70px;text-align: center">
-						            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" />					           
-						        </p:column>
-						        
-						    </p:dataTable>	
+					    <p:tab title="Condizione di pagamento" titleStyleClass="tabNouveau">
+					    	<h:form id="form_pagamento">
+								<p:panelGrid columns="1" columnClasses="ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="margin-bottom:40px">				
+									<p:commandButton styleClass="bottone" value="Nuova condizione di pagamento" action="#{Condizioni.buttonNuovoPagamento}"  />
+								</p:panelGrid>
+								<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
+							        <f:facet name="header">
+							            Condizione di pagamento
+							        </f:facet>
+							        <p:column headerText="Accetta carte ">
+							            <h:outputText value="#{car.id}" />
+							        </p:column>
+							 
+							        <p:column headerText="Prenotazioni senza carta per i clienti connazionali">
+							            <h:outputText value="#{car.year}" />
+							        </p:column>
+							 
+							        <p:column headerText="Pagamenti on line">
+							            <h:outputText value="#{car.brand}" />
+							        </p:column>
+							 
+							        <p:column headerText="Attivo">
+							            <h:outputText value="#{car.color}" />
+							        </p:column>
+							        
+							        <p:column headerText="Seleziona" style="width:70px;text-align: center">
+							            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" action="#{Condizioni.buttonActionPagamento(car)}" />					           
+							        </p:column>
+							        
+							    </p:dataTable>	
+						    </h:form>
 					    </p:tab>	
-					    <p:tab title="Godfather Part III" titleStyleClass="tabNouveau">
-					    <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-							<p:outputLabel styleClass="testo" value="Checkbox"/>
-					        <p:selectBooleanCheckbox value="" />
-					        <p:outputLabel styleClass="testo" value="Checkbox"/>
-					        <p:selectBooleanCheckbox value="" />       
-							<p:outputLabel styleClass="testo" value="Checkbox"/>
-					        <p:selectBooleanCheckbox value="" />
-					        <p:outputLabel styleClass="testo" for="onemenu" value="OneMenu"/>
-			                <p:selectOneMenu id="onemenu" styleClass="sfondo">  
-			                    <f:selectItem itemLabel="Select One" itemValue="" />
-			                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-			                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-			                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-			                </p:selectOneMenu>			                
-		                	<p:outputLabel styleClass="testo" for="onemenu2" value="OneMenu"/>
-			                <p:selectOneMenu id="onemenu2">
-			                    <f:selectItem itemLabel="Select One" itemValue="" />
-			                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-			                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-			                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-			                </p:selectOneMenu>
-			                <p:outputLabel styleClass="testo" for="onemenu3" value="OneMenu"/>
-			                <p:selectOneMenu id="onemenu3">
-			                    <f:selectItem itemLabel="Select One" itemValue="" />
-			                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-			                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-			                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-			                </p:selectOneMenu>
-			            </p:panelGrid>
-			            <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">   
-			                <p:outputLabel styleClass="testo" for="onemenu4" value="OneMenu"/>
-			                <p:selectOneMenu id="onemenu4">
-			                    <f:selectItem itemLabel="Select One" itemValue="" />
-			                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-			                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-			                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-			                </p:selectOneMenu>
-			                <p:outputLabel styleClass="testo" for="onemenu5" value="OneMenu"/>
-			                <p:selectOneMenu id="onemenu5">
-			                    <f:selectItem itemLabel="Select One" itemValue="" />
-			                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-			                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-			                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-			                </p:selectOneMenu>
-			                <p:outputLabel styleClass="testo" for="onemenu6" value="OneMenu"/>
-			                <p:selectOneMenu id="onemenu6">
-			                    <f:selectItem itemLabel="Select One" itemValue="" />
-			                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-			                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-			                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-			                </p:selectOneMenu>
-			                <p:outputLabel styleClass="testo" for="onemenu7" value="OneMenu"/>
-			                <p:selectOneMenu id="onemenu7">
-			                    <f:selectItem itemLabel="Select One" itemValue="" />
-			                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-			                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-			                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-			                </p:selectOneMenu>
-			             </p:panelGrid>
-			             <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-							<p:outputLabel styleClass="testo" value="Checkbox"/>
-					        <p:selectBooleanCheckbox value="" />
-					        <p:outputLabel styleClass="testo" value="Checkbox"/>
-					        <p:selectBooleanCheckbox value="" />       						                						                
-						</p:panelGrid>
-						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-							<p:commandButton styleClass="bottone" value="Salva" type="button" />
-							<p:commandButton styleClass="bottone" value="Annulla" type="button" />
-						</p:panelGrid>
+					    <p:tab title="Altre condizioni" titleStyleClass="tabNouveau">
+					    <h:form id="form_altro">
+						    <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:outputLabel styleClass="testo" value="Struttura ospita bambini :"/>
+						        <p:selectBooleanCheckbox value="false" />
+						        <p:outputLabel styleClass="testo" value="I bambini possono dormire nei letti esistenti :"/>
+						        <p:selectBooleanCheckbox value="false" />       
+								<p:outputLabel styleClass="testo" value="La struttura fornisce letti aggiuntivi"/>
+						        <p:selectBooleanCheckbox value="false" />
+						        <p:outputLabel styleClass="testo" for="onemenu" value="Internet :"/>
+				                <p:selectOneMenu id="onemenu" styleClass="sfondo">  
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="Si" itemValue="1" />
+				                    <f:selectItem itemLabel="No" itemValue="0" />				                    
+				                </p:selectOneMenu>			                
+			                	<p:outputLabel styleClass="testo" for="onemenu2" value="Parcheggio :"/>
+				                <p:selectOneMenu id="onemenu2">
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="Assente" itemValue="0" />
+				                    <f:selectItem itemLabel="Interno" itemValue="1" />
+				                    <f:selectItem itemLabel="Esterno" itemValue="2" />
+				                </p:selectOneMenu>
+				                <p:outputLabel styleClass="testo" for="onemenu3" value="Animali :"/>
+				                <p:selectOneMenu id="onemenu3">
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="Si" itemValue="1" />
+				                    <f:selectItem itemLabel="No" itemValue="0" />
+				                    <f:selectItem itemLabel="Solo Domestrici" itemValue="2" />
+				                </p:selectOneMenu>
+				            </p:panelGrid>
+				            <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">   
+				                <p:outputLabel styleClass="testo" for="onemenu4" value="Check-in dalle :"/>
+				                <p:selectOneMenu id="onemenu4">
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="00" itemValue="0" />
+				                    <f:selectItem itemLabel="01" itemValue="1" />
+				                    <f:selectItem itemLabel="02" itemValue="2" />
+				                    <f:selectItem itemLabel="03" itemValue="3" />
+				                    <f:selectItem itemLabel="04" itemValue="4" />
+				                    <f:selectItem itemLabel="05" itemValue="5" />
+				                    <f:selectItem itemLabel="06" itemValue="6" />
+				                    <f:selectItem itemLabel="07" itemValue="7" />
+				                    <f:selectItem itemLabel="08" itemValue="8" />
+				                    <f:selectItem itemLabel="09" itemValue="9" />
+				                    <f:selectItem itemLabel="10" itemValue="10" />
+				                    <f:selectItem itemLabel="11" itemValue="11" />
+				                    <f:selectItem itemLabel="12" itemValue="12" />
+				                    <f:selectItem itemLabel="13" itemValue="13" />
+				                    <f:selectItem itemLabel="14" itemValue="14" />
+				                    <f:selectItem itemLabel="15" itemValue="15" />
+				                    <f:selectItem itemLabel="16" itemValue="16" />
+				                    <f:selectItem itemLabel="17" itemValue="17" />
+				                    <f:selectItem itemLabel="18" itemValue="18" />
+				                    <f:selectItem itemLabel="19" itemValue="19" />
+				                    <f:selectItem itemLabel="20" itemValue="20" />
+				                    <f:selectItem itemLabel="21" itemValue="21" />
+				                    <f:selectItem itemLabel="22" itemValue="22" />
+				                    <f:selectItem itemLabel="23" itemValue="23" />	
+				                </p:selectOneMenu>
+				                <p:outputLabel styleClass="testo" for="onemenu5" value="Check-in alle :"/>
+				                <p:selectOneMenu id="onemenu5">
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="00" itemValue="0" />
+				                    <f:selectItem itemLabel="01" itemValue="1" />
+				                    <f:selectItem itemLabel="02" itemValue="2" />
+				                    <f:selectItem itemLabel="03" itemValue="3" />
+				                    <f:selectItem itemLabel="04" itemValue="4" />
+				                    <f:selectItem itemLabel="05" itemValue="5" />
+				                    <f:selectItem itemLabel="06" itemValue="6" />
+				                    <f:selectItem itemLabel="07" itemValue="7" />
+				                    <f:selectItem itemLabel="08" itemValue="8" />
+				                    <f:selectItem itemLabel="09" itemValue="9" />
+				                    <f:selectItem itemLabel="10" itemValue="10" />
+				                    <f:selectItem itemLabel="11" itemValue="11" />
+				                    <f:selectItem itemLabel="12" itemValue="12" />
+				                    <f:selectItem itemLabel="13" itemValue="13" />
+				                    <f:selectItem itemLabel="14" itemValue="14" />
+				                    <f:selectItem itemLabel="15" itemValue="15" />
+				                    <f:selectItem itemLabel="16" itemValue="16" />
+				                    <f:selectItem itemLabel="17" itemValue="17" />
+				                    <f:selectItem itemLabel="18" itemValue="18" />
+				                    <f:selectItem itemLabel="19" itemValue="19" />
+				                    <f:selectItem itemLabel="20" itemValue="20" />
+				                    <f:selectItem itemLabel="21" itemValue="21" />
+				                    <f:selectItem itemLabel="22" itemValue="22" />
+				                    <f:selectItem itemLabel="23" itemValue="23" />
+				                </p:selectOneMenu>
+				                <p:outputLabel styleClass="testo" for="onemenu6" value="Check-out dalle :"/>
+				                <p:selectOneMenu id="onemenu6">
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="00" itemValue="0" />
+				                    <f:selectItem itemLabel="01" itemValue="1" />
+				                    <f:selectItem itemLabel="02" itemValue="2" />
+				                    <f:selectItem itemLabel="03" itemValue="3" />
+				                    <f:selectItem itemLabel="04" itemValue="4" />
+				                    <f:selectItem itemLabel="05" itemValue="5" />
+				                    <f:selectItem itemLabel="06" itemValue="6" />
+				                    <f:selectItem itemLabel="07" itemValue="7" />
+				                    <f:selectItem itemLabel="08" itemValue="8" />
+				                    <f:selectItem itemLabel="09" itemValue="9" />
+				                    <f:selectItem itemLabel="10" itemValue="10" />
+				                    <f:selectItem itemLabel="11" itemValue="11" />
+				                    <f:selectItem itemLabel="12" itemValue="12" />
+				                    <f:selectItem itemLabel="13" itemValue="13" />
+				                    <f:selectItem itemLabel="14" itemValue="14" />
+				                    <f:selectItem itemLabel="15" itemValue="15" />
+				                    <f:selectItem itemLabel="16" itemValue="16" />
+				                    <f:selectItem itemLabel="17" itemValue="17" />
+				                    <f:selectItem itemLabel="18" itemValue="18" />
+				                    <f:selectItem itemLabel="19" itemValue="19" />
+				                    <f:selectItem itemLabel="20" itemValue="20" />
+				                    <f:selectItem itemLabel="21" itemValue="21" />
+				                    <f:selectItem itemLabel="22" itemValue="22" />
+				                    <f:selectItem itemLabel="23" itemValue="23" />
+				                </p:selectOneMenu>
+				                <p:outputLabel styleClass="testo" for="onemenu7" value="Check-in alle :"/>
+				                <p:selectOneMenu id="onemenu7">
+				                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+				                    <f:selectItem itemLabel="00" itemValue="0" />
+				                    <f:selectItem itemLabel="01" itemValue="1" />
+				                    <f:selectItem itemLabel="02" itemValue="2" />
+				                    <f:selectItem itemLabel="03" itemValue="3" />
+				                    <f:selectItem itemLabel="04" itemValue="4" />
+				                    <f:selectItem itemLabel="05" itemValue="5" />
+				                    <f:selectItem itemLabel="06" itemValue="6" />
+				                    <f:selectItem itemLabel="07" itemValue="7" />
+				                    <f:selectItem itemLabel="08" itemValue="8" />
+				                    <f:selectItem itemLabel="09" itemValue="9" />
+				                    <f:selectItem itemLabel="10" itemValue="10" />
+				                    <f:selectItem itemLabel="11" itemValue="11" />
+				                    <f:selectItem itemLabel="12" itemValue="12" />
+				                    <f:selectItem itemLabel="13" itemValue="13" />
+				                    <f:selectItem itemLabel="14" itemValue="14" />
+				                    <f:selectItem itemLabel="15" itemValue="15" />
+				                    <f:selectItem itemLabel="16" itemValue="16" />
+				                    <f:selectItem itemLabel="17" itemValue="17" />
+				                    <f:selectItem itemLabel="18" itemValue="18" />
+				                    <f:selectItem itemLabel="19" itemValue="19" />
+				                    <f:selectItem itemLabel="20" itemValue="20" />
+				                    <f:selectItem itemLabel="21" itemValue="21" />
+				                    <f:selectItem itemLabel="22" itemValue="22" />
+				                    <f:selectItem itemLabel="23" itemValue="23" />
+				                </p:selectOneMenu>
+				             </p:panelGrid>
+				             <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:outputLabel styleClass="testo" value="Prenotazione senza indirizzo :"/>
+						        <p:selectBooleanCheckbox value="false" />
+						        <p:outputLabel styleClass="testo" value="Prenotazione senza telefono :"/>
+						        <p:selectBooleanCheckbox value="false" />       						                						                
+							</p:panelGrid>
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:commandButton styleClass="bottone" value="Salva" action="#{Condizioni.buttonSalvaAltro}" />
+								<p:commandButton styleClass="bottone" value="Annulla" action="#{Condizioni.buttonAnnullaAltro}"  />
+							</p:panelGrid>
+						</h:form>
 					    </p:tab>
-					    <p:tab title="Godfather Part IV" titleStyleClass="tabNouveau">
-							<p:panelGrid columns="1" columnClasses="ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="margin-bottom:40px">				
-								<p:commandButton styleClass="bottone" value="Nuovi Costi" type="button" />
-							</p:panelGrid>
-							<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
-						        <f:facet name="header">
-						            DataTable
-						        </f:facet>
-						        <p:column headerText="Id">
-						            <h:outputText value="#{car.id}" />
-						        </p:column>
-						 
-						        <p:column headerText="Year">
-						            <h:outputText value="#{car.year}" />
-						        </p:column>
-						 
-						        <p:column headerText="Brand">
-						            <h:outputText value="#{car.brand}" />
-						        </p:column>
-						 
-						        <p:column headerText="Color">
-						            <h:outputText value="#{car.color}" />
-						        </p:column>
-						        
-						        <p:column headerText="Id2">
-						            <h:outputText value="#{car.id}" />
-						        </p:column>
-						 
-						        <p:column headerText="Year2">
-						            <h:outputText value="#{car.year}" />
-						        </p:column>
-						 
-						        <p:column headerText="Brand2">
-						            <h:outputText value="#{car.brand}" />
-						        </p:column>
-						 
-						        <p:column headerText="Color2">
-						            <h:outputText value="#{car.color}" />
-						        </p:column>
-						        
-						        <p:column headerText="Seleziona" style="width:70px;text-align: center">
-						            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" />					           
-						        </p:column>
-						        
-						    </p:dataTable>	
+					    <p:tab title="Costi aggiuntivi" titleStyleClass="tabNouveau">
+					    	<h:form id="form_costi">
+								<p:panelGrid columns="1" columnClasses="ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="margin-bottom:40px">				
+									<p:commandButton styleClass="bottone" value="Nuovi Costi" action="#{Condizioni.buttonNuovoCosti}"  />
+								</p:panelGrid>
+								<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
+							        <f:facet name="header">
+							            Costi aggiuntivi
+							        </f:facet>
+							        <p:column headerText="Deposito cauzionale ">
+							            <h:outputText value="#{car.id}" />
+							        </p:column>
+							 
+							        <p:column headerText="Tipo di costo">
+							            <h:outputText value="#{car.year}" />
+							        </p:column>
+							 
+							        <p:column headerText="Incluso nel prezzo">
+							            <h:outputText value="#{car.brand}" />
+							        </p:column>
+							 
+							        <p:column headerText="Importo">
+							            <h:outputText value="#{car.color}" />
+							        </p:column>
+							        
+							        <p:column headerText="Tipo di pagamento">
+							            <h:outputText value="#{car.id}" />
+							        </p:column>
+							        
+							        <p:column headerText="Seleziona" style="width:70px;text-align: center">
+							            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" action="#{Condizioni.buttonActionCosti(car)}"/>					           
+							        </p:column>
+							        
+							    </p:dataTable>
+						    </h:form>	
 					    </p:tab>
 				</p:tabView>
-			</p:fieldset>
-		</h:form>
+			</p:fieldset>		
 	 </ui:define>
 </ui:composition>

@@ -17,58 +17,41 @@
 			
 			<p:fieldset styleClass="fieldset" legend="Messaggi" toggleable="true" toggleSpeed="500" style="margin-top:20px">
 					<p:panelGrid columns="1" columnClasses="ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank ui-fluid" style="margin-bottom:40px">				
-						<p:commandButton styleClass="bottone" value="Nuovo Messaggio" type="button" />
+						<p:commandButton styleClass="bottone" value="Nuovo Messaggio"  action="#{MessaggiBusinessPrivato.buttonNuovo}" />
 					</p:panelGrid>
 					<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">			
-						<p:outputLabel styleClass="testo" for="onemenu" value="OneMenu"/>
+						<p:outputLabel styleClass="testo" for="onemenu" value="Filtro messaggio :"/>
 		                <p:selectOneMenu id="onemenu" styleClass="sfondo">  
-		                    <f:selectItem itemLabel="Select One" itemValue="" />
-		                    <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-		                    <f:selectItem itemLabel="PS4" itemValue="PS4" />
-		                    <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+		                    <f:selectItem itemLabel="Seleziona" itemValue="-1" />
+		                    <f:selectItem itemLabel="Ricevuto" itemValue="1" />
+		                    <f:selectItem itemLabel="Inviato" itemValue="2" />		                    
 		                </p:selectOneMenu>
 					</p:panelGrid>
 					<p:panelGrid columns="1" columnClasses="ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
-						<p:commandButton styleClass="bottone" value="Ricerca" type="button" />
+						<p:commandButton update="tabellaricerca" styleClass="bottone" value="Ricerca" actionListener="#{MessaggiBusinessPrivato.buttonRicerca}"  />
 					</p:panelGrid>
-					<p:dataTable var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
+					<p:dataTable id="tabellaricerca" var="car" value="#{dtBasicView.cars}" reflow="true" rows="8" paginator="true" style="margin-top:20px">
 				        <f:facet name="header">
-				            DataTable
+				            Messaggi
 				        </f:facet>
-				        <p:column headerText="Id">
+				        <p:column headerText="Titolo">
 				            <h:outputText value="#{car.id}" />
 				        </p:column>
 				 
-				        <p:column headerText="Year">
+				        <p:column headerText="Data">
 				            <h:outputText value="#{car.year}" />
 				        </p:column>
 				 
-				        <p:column headerText="Brand">
+				        <p:column headerText="Mittente/Destinatario">
 				            <h:outputText value="#{car.brand}" />
 				        </p:column>
 				 
-				        <p:column headerText="Color">
-				            <h:outputText value="#{car.color}" />
-				        </p:column>
-				        
-				        <p:column headerText="Id2">
-				            <h:outputText value="#{car.id}" />
-				        </p:column>
-				 
-				        <p:column headerText="Year2">
-				            <h:outputText value="#{car.year}" />
-				        </p:column>
-				 
-				        <p:column headerText="Brand2">
-				            <h:outputText value="#{car.brand}" />
-				        </p:column>
-				 
-				        <p:column headerText="Color2">
+				        <p:column headerText="Inviato/Ricevuto">
 				            <h:outputText value="#{car.color}" />
 				        </p:column>
 				        
 				        <p:column headerText="Seleziona" style="width:70px;text-align: center">
-				            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" />					           
+				            <p:commandButton styleClass="bottone" icon="ui-icon-circle-arrow-e" title="View" action="#{MessaggiBusinessPrivato.buttonAction(car)}" />					           
 				        </p:column>
 				        
 				    </p:dataTable>		

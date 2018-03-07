@@ -39,7 +39,7 @@ public class Profilo_Privato extends Pagina {
 		return null;
 	}
 
-	public String buttonSalvaIndirizzo() { 
+	public String buttonSalvaIndirizzo() {     
 		return null;
 	}
 	
